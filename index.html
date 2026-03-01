@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himali Suresh — Product Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --surface: #edeae3;
+    --ink: #18181a;
+    --mid: #6b6860;
+    --faint: #c8c4bb;
+    --accent: #b84c1e;
+    --accent-soft: #f0e8e2;
+    --green: #2d6a4f;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Instrument Serif', serif;
+    --sans: 'Instrument Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; mix-blend-mode: multiply;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 48px;
+    background: rgba(247,244,239,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .nav-left { display: flex; align-items: center; gap: 32px; }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 17px;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo em { color: var(--accent); font-style: italic; }
+
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+
+  .nav-github {
+    display: flex; align-items: center; gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--mid);
+    border: 1px solid var(--faint);
+    padding: 6px 12px;
+    transition: all 0.2s;
+  }
+
+  .nav-github:hover { color: var(--ink); border-color: var(--ink); }
+
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    background: var(--accent);
+    color: white;
+    padding: 7px 16px;
+    transition: opacity 0.2s;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    padding: 110px 48px 72px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
+    align-items: end;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+    margin-bottom: 28px;
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    padding: 6px 14px;
+    width: fit-content;
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4caf50;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(52px, 6.5vw, 88px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+
+  .hero-name .line2 {
+    color: var(--accent);
+    font-style: italic;
+    display: block;
+  }
+
+  /* ONE SENTENCE POSITIONING */
+  .hero-one-liner {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 16px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    max-width: 480px;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    color: var(--mid);
+    max-width: 440px;
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    background: var(--accent);
+    color: white;
+    padding: 10px 20px;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--mid);
+    border: 1px solid var(--faint);
+    padding: 10px 20px;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  .hero-right { padding-bottom: 8px; }
+
+  .now-block {
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .now-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .now-label::after { content: ''; flex: 1; height: 1px; background: var(--faint); }
+
+  .now-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--faint);
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 16px;
+    font-size: 13px;
+  }
+
+  .now-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .now-item-key {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+    padding-top: 2px;
+  }
+
+  .now-item-val { color: var(--ink); line-height: 1.5; font-size: 13px; }
+
+  .hero-numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--faint);
+    border: 1px solid var(--faint);
+  }
+
+  .h-num {
+    background: var(--bg);
+    padding: 18px 14px;
+    text-align: center;
+  }
+
+  .h-num-val {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-style: italic;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .h-num-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mid);
+  }
+
+  /* ─── SECTION SHELL ─── */
+  .section-wrap { border-top: 1px solid var(--faint); }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .s-num {
+    padding: 24px 48px;
+    border-right: 1px solid var(--faint);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+  }
+
+  .s-title-wrap {
+    padding: 24px 48px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .s-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--mid);
+  }
+
+  .s-note {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  /* ─── WORK ─── */
+  .work-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    border-bottom: 1px solid var(--faint);
+    transition: background 0.25s;
+  }
+
+  .work-item:hover { background: var(--surface); }
+
+  .work-meta {
+    padding: 36px 48px;
+    border-right: 1px solid var(--faint);
+  }
+
+  .work-niche {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .work-period {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  .work-body { padding: 36px 48px; }
+
+  .work-problem {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .work-outcome {
+    font-size: 13px;
+    color: var(--mid);
+    margin-bottom: 20px;
+    line-height: 1.75;
+  }
+
+  .work-numbers {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 16px 0;
+    border-top: 1px solid var(--faint);
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .w-num-val {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink);
+    display: block;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .w-num-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mid);
+  }
+
+  .wd-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 8px;
+  }
+
+  .wd-item {
+    font-size: 13px;
+    color: var(--mid);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--faint);
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    line-height: 1.5;
+  }
+
+  .wd-item:last-child { border-bottom: none; }
+
+  .wd-item::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* ─── TECH STACK ─── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+  }
+
+  .tech-left {
+    padding: 40px 48px;
+    border-right: 1px solid var(--faint);
+  }
+
+  .tech-right {
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--faint);
+    align-content: start;
+  }
+
+  .tech-group {
+    background: var(--bg);
+    padding: 20px;
+  }
+
+  .tech-group-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .tech-items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .tech-item {
+    font-size: 12px;
+    color: var(--mid);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tech-item::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--faint);
+    flex-shrink: 0;
+  }
+
+  .tech-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  .tech-gh-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-top: 12px;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+    transition: gap 0.2s;
+  }
+
+  .tech-gh-link:hover { gap: 10px; }
+
+  /* ─── CONCEPTS ─── */
+  .concepts-intro {
+    padding: 24px 48px;
+    font-size: 13px;
+    color: var(--mid);
+    border-bottom: 1px solid var(--faint);
+    font-style: italic;
+    max-width: 680px;
+  }
+
+  .concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .concept-card {
+    padding: 32px 28px;
+    border-right: 1px solid var(--faint);
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .concept-card:nth-child(3n) { border-right: none; }
+
+  .concept-index {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-style: italic;
+    color: var(--faint);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .concept-niche {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .concept-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .concept-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .concept-gap {
+    font-size: 11px;
+    color: var(--ink);
+    padding: 10px 12px;
+    background: var(--accent-soft);
+    border-left: 2px solid var(--accent);
+    line-height: 1.6;
+  }
+
+  .concept-gap strong {
+    display: block;
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-wrap {
+    padding: 48px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    border: 1px solid var(--faint);
+    padding: 28px;
+    background: var(--surface);
+    position: relative;
+  }
+
+  .testimonial-card.placeholder {
+    border-style: dashed;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 140px;
+    gap: 8px;
+  }
+
+  .placeholder-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+  }
+
+  .placeholder-note {
+    font-size: 12px;
+    color: var(--faint);
+    font-style: italic;
+  }
+
+  .testimonial-quote {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .testimonial-quote::before { content: '\201C'; color: var(--accent); }
+  .testimonial-quote::after { content: '\201D'; color: var(--accent); }
+
+  .testimonial-person {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mid);
+  }
+
+  .testimonial-person strong {
+    display: block;
+    font-size: 11px;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    border-bottom: 1px solid var(--faint);
+    padding: 32px 0;
+  }
+
+  .exp-meta {
+    padding: 0 48px;
+    border-right: 1px solid var(--faint);
+  }
+
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+  }
+
+  .exp-period strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+
+  .exp-body { padding: 0 48px; }
+
+  .exp-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
+  }
+
+  .exp-org {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mid);
+    margin-bottom: 14px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .exp-bullets li {
+    font-size: 13px;
+    color: var(--mid);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .exp-bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--accent);
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .exp-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 10px;
+    border: 1px solid var(--faint);
+    color: var(--mid);
+  }
+
+  /* ─── WRITING ─── */
+  .writing-feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .writing-left {
+    padding: 48px;
+    border-right: 1px solid var(--faint);
+    background: var(--surface);
+  }
+
+  .writing-right { padding: 48px; }
+
+  .article-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .article-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .article-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mid);
+    margin-bottom: 20px;
+  }
+
+  .article-pull {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.8;
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+    font-style: italic;
+  }
+
+  .writing-about {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .coined {
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--faint);
+    margin-bottom: 24px;
+  }
+
+  .coined-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 4px;
+  }
+
+  .coined-term {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .coined-def { font-size: 12px; color: var(--mid); line-height: 1.6; }
+
+  .writing-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .wtag { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border: 1px solid var(--faint); color: var(--mid); }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-left {
+    padding: 48px;
+    border-right: 1px solid var(--faint);
+  }
+
+  .about-text {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--mid);
+    margin-bottom: 20px;
+  }
+
+  .about-text strong { color: var(--ink); font-weight: 500; }
+
+  .about-right { padding: 48px; }
+
+  .skill-group { margin-bottom: 24px; }
+
+  .skill-group-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .stag {
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid var(--faint);
+    color: var(--mid);
+    background: var(--surface);
+  }
+
+  /* ─── CTA BANNER ─── */
+  .cta-banner {
+    background: var(--ink);
+    padding: 56px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .cta-heading {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 400;
+    color: white;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .cta-heading span { color: #e8a080; }
+
+  .cta-sub {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+  }
+
+  .cta-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+
+  .cta-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    background: var(--accent);
+    color: white;
+    padding: 12px 24px;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+
+  .cta-btn-primary:hover { opacity: 0.85; }
+
+  .cta-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 12px 24px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .cta-btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.4); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--faint);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 32px 48px;
+    gap: 40px;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links { display: flex; gap: 24px; }
+
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-name { animation: fadeUp 0.9s 0.1s both; }
+  .hero-one-liner { animation: fadeUp 0.9s 0.2s both; }
+  .hero-sub { animation: fadeUp 0.9s 0.3s both; }
+  .hero-actions { animation: fadeUp 0.9s 0.4s both; }
+  .now-block { animation: fadeUp 0.9s 0.25s both; }
+  .hero-numbers { animation: fadeUp 0.9s 0.4s both; }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--faint); }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">Himali <em>Suresh</em></div>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#concepts">Concepts</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <a href="https://github.com/codesbyhimali" target="_blank" class="nav-github">
+      ↗ GitHub
+    </a>
+    <a href="mailto:himalis106@gmail.com" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      Open to internships — PM · Product Ops · BA · Founder's Office
+    </div>
+    <h1 class="hero-name">
+      Himali
+      <span class="line2">Suresh</span>
+    </h1>
+    <p class="hero-one-liner">I find where systems create friction for people and work on removing it.</p>
+    <p class="hero-sub">
+      BCA student at CHRIST University, Pune. My work spans product, operations, and UX across a D2C venture, a live platform redesign, and communication systems built for scale.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:himalis106@gmail.com" class="btn-primary">Email me →</a>
+      <a href="https://linkedin.com/in/himalisuresh" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="https://github.com/codesbyhimali" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="now-block">
+      <div class="now-label">Now</div>
+      <div class="now-item">
+        <span class="now-item-key">Building</span>
+        <span class="now-item-val">Speculative concepts in EdTech, Fintech, and Productivity</span>
+      </div>
+      <div class="now-item">
+        <span class="now-item-key">Writing</span>
+        <span class="now-item-val">Product critique on Medium — first piece published</span>
+      </div>
+      <div class="now-item">
+        <span class="now-item-key">Reading</span>
+        <span class="now-item-val">Why e-books haven't solved the passive vocabulary problem</span>
+      </div>
+      <div class="now-item">
+        <span class="now-item-key">Looking</span>
+        <span class="now-item-val">Internship — Summer / Fall 2026</span>
+      </div>
+    </div>
+    <div class="hero-numbers">
+      <div class="h-num">
+        <span class="h-num-val">40K+</span>
+        <span class="h-num-label">Students reached</span>
+      </div>
+      <div class="h-num">
+        <span class="h-num-val">95.4%</span>
+        <span class="h-num-label">Sell-through</span>
+      </div>
+      <div class="h-num">
+        <span class="h-num-val">5K+</span>
+        <span class="h-num-label">Users served</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WORK (SHIPPED) ─── -->
+<section id="work" class="section-wrap">
+  <div class="section-header">
+    <div class="s-num">01 — Work</div>
+    <div class="s-title-wrap">
+      <div class="s-title">Shipped — problems I was handed, and what changed</div>
+      <div class="s-note">4 projects</div>
+    </div>
+  </div>
+
+  <!-- BeingHR -->
+  <div class="work-item">
+    <div class="work-meta">
+      <div class="work-niche">UX · HR Tech</div>
+      <div class="work-period">Jul – Sep 2025<br>GM Infotech<br>Mumbai · Internship</div>
+    </div>
+    <div class="work-body">
+      <div class="work-problem">A platform where users couldn't find what they came for</div>
+      <div class="work-outcome">BeingHR had fragmented navigation, inconsistent UI patterns, and no clear path from landing to task completion. I redesigned it end-to-end: mapping every flow before touching layouts, building a component library to enforce consistency, and deploying to production to catch browser edge cases that Figma cannot show.</div>
+      <div class="work-numbers">
+        <div class="w-num"><span class="w-num-val">7</span><span class="w-num-label">Pages redesigned</span></div>
+        <div class="w-num"><span class="w-num-val">14</span><span class="w-num-label">Flows mapped</span></div>
+        <div class="w-num"><span class="w-num-val">25</span><span class="w-num-label">Reusable components</span></div>
+        <div class="w-num"><span class="w-num-val">3</span><span class="w-num-label">Device breakpoints</span></div>
+      </div>
+      <div class="wd-label">Decisions that shaped the outcome</div>
+      <div class="wd-item">Built the component library before touching any page layout so visual consistency was structural, not cosmetic</div>
+      <div class="wd-item">Mapped all 14 flows before wireframing to surface navigation conflicts early, not after screens were done</div>
+      <div class="wd-item">Deployed to HTML/CSS in production and caught 4 edge cases invisible in Figma</div>
+    </div>
+  </div>
+
+  <!-- RAISEit -->
+  <div class="work-item">
+    <div class="work-meta">
+      <div class="work-niche">Product · Real-time</div>
+      <div class="work-period">May – Jun 2025<br>Personal project<br>Live on Vercel</div>
+    </div>
+    <div class="work-body">
+      <div class="work-problem">Auction UIs that break when two users act at the same time</div>
+      <div class="work-outcome">RAISEit is a real-time auction platform built in React.js. The hard problem wasn't the UI — it was what happens at the edges: simultaneous bids, budget enforcement, state conflicts. I wrote the logic spec before building to avoid drift, and designed for failure states first.</div>
+      <div class="work-numbers">
+        <div class="w-num"><span class="w-num-val">4</span><span class="w-num-label">State transitions mapped</span></div>
+        <div class="w-num"><span class="w-num-val">React</span><span class="w-num-label">Stack</span></div>
+        <div class="w-num"><span class="w-num-val">Live</span><span class="w-num-label">Deployed</span></div>
+      </div>
+      <div class="wd-label">Decisions that shaped the outcome</div>
+      <div class="wd-item">Wrote a state transition spec (active → outbid → won/lost) before any implementation to prevent logic drift mid-build</div>
+      <div class="wd-item">Enforced budget constraints on the UI layer for immediate feedback without a server round-trip</div>
+      <div class="wd-item">Designed competitive failure states first, because that is where the user experience actually breaks</div>
+    </div>
+  </div>
+
+  <!-- Twisted Luxuries -->
+  <div class="work-item">
+    <div class="work-meta">
+      <div class="work-niche">Product Ops · D2C</div>
+      <div class="work-period">Oct 2024 – Present<br>Twisted Luxuries<br>Co-founder</div>
+    </div>
+    <div class="work-body">
+      <div class="work-problem">Running a product with no margin for guessing</div>
+      <div class="work-outcome">Co-owned a D2C product business across 4 production cycles. Pricing, inventory, and customer feedback all moved at once. Used sell-through rate as the primary health signal rather than revenue because it caught inventory risk earlier and more accurately.</div>
+      <div class="work-numbers">
+        <div class="w-num"><span class="w-num-val">95.4%</span><span class="w-num-label">Sell-through</span></div>
+        <div class="w-num"><span class="w-num-val">1,100</span><span class="w-num-label">Units managed</span></div>
+        <div class="w-num"><span class="w-num-val">120+</span><span class="w-num-label">Customer signals</span></div>
+        <div class="w-num"><span class="w-num-val">−12%</span><span class="w-num-label">Unsold stock</span></div>
+      </div>
+      <div class="wd-label">Decisions that shaped the outcome</div>
+      <div class="wd-item">Ran 5 pricing iterations based on direct customer signal across 4 cycles, not assumption</div>
+      <div class="wd-item">Chose sell-through over revenue as the primary metric to surface inventory risk before it compounded</div>
+      <div class="wd-item">Discontinued two underperforming variants after cycle 2 to concentrate demand on what was working</div>
+    </div>
+  </div>
+
+  <!-- Placement Newsletter -->
+  <div class="work-item">
+    <div class="work-meta">
+      <div class="work-niche">Ops · Comms</div>
+      <div class="work-period">Nov 2025 – Present<br>Placements' Cell<br>CHRIST University</div>
+    </div>
+    <div class="work-body">
+      <div class="work-problem">40,000 students with no single reliable source for placement updates</div>
+      <div class="work-outcome">Designed and ran the placement newsletter from scratch — gathering from 10+ sources, coordinating 5+ contributors, shipping bi-monthly. Consolidated 7 fragmented update types into one structured communication. Delivered the pilot edition through the university's declared Christmas holiday week.</div>
+      <div class="work-numbers">
+        <div class="w-num"><span class="w-num-val">40K+</span><span class="w-num-label">Students reached</span></div>
+        <div class="w-num"><span class="w-num-val">7</span><span class="w-num-label">Update types unified</span></div>
+        <div class="w-num"><span class="w-num-val">10+</span><span class="w-num-label">Sources coordinated</span></div>
+      </div>
+      <div class="wd-label">Decisions that shaped the outcome</div>
+      <div class="wd-item">Structured content around what students were most anxious about, not what was easiest to compile</div>
+      <div class="wd-item">Set a bi-monthly cadence to create predictable expectations and reduce query spikes between issues</div>
+      <div class="wd-item">Shipped the pilot edition solo through a declared holiday week rather than delay the cycle</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TECH STACK ─── -->
+<section class="section-wrap">
+  <div class="section-header">
+    <div class="s-num">01b — Stack</div>
+    <div class="s-title-wrap">
+      <div class="s-title">What I actually build with</div>
+      <a href="https://github.com/codesbyhimali" target="_blank" class="s-note" style="color: var(--accent);">↗ github.com/codesbyhimali</a>
+    </div>
+  </div>
+  <div class="tech-grid">
+    <div class="tech-left">
+      <p class="tech-note">Technical enough to understand what engineers are building and to build quick prototypes myself. Not positioning as an engineer — positioning as someone who can work in the same room as one without slowing things down.</p>
+      <a href="https://github.com/codesbyhimali" target="_blank" class="tech-gh-link">View GitHub repos →</a>
+    </div>
+    <div class="tech-right">
+      <div class="tech-group">
+        <div class="tech-group-label">Languages</div>
+        <div class="tech-items">
+          <span class="tech-item">JavaScript</span>
+          <span class="tech-item">HTML5 / CSS3</span>
+          <span class="tech-item">Python (basic)</span>
+          <span class="tech-item">Java (OOP)</span>
+        </div>
+      </div>
+      <div class="tech-group">
+        <div class="tech-group-label">Frameworks</div>
+        <div class="tech-items">
+          <span class="tech-item">React.js</span>
+          <span class="tech-item">Tailwind CSS</span>
+          <span class="tech-item">Node.js (basic)</span>
+          <span class="tech-item">REST APIs</span>
+        </div>
+      </div>
+      <div class="tech-group">
+        <div class="tech-group-label">Tools</div>
+        <div class="tech-items">
+          <span class="tech-item">Figma</span>
+          <span class="tech-item">Microsoft Power BI</span>
+          <span class="tech-item">Firebase</span>
+          <span class="tech-item">Git / GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONCEPTS ─── -->
+<section id="concepts" class="section-wrap">
+  <div class="section-header">
+    <div class="s-num">02 — Concepts</div>
+    <div class="s-title-wrap">
+      <div class="s-title">Ideas I keep coming back to</div>
+      <div class="s-note">Not shipped — documented thinking</div>
+    </div>
+  </div>
+  <div class="concepts-intro">
+    These are product gaps I have identified and thought through to the point of knowing what is missing and why it persists. Not mockups, not promises — structured thinking about problems worth solving.
+  </div>
+  <div class="concepts-grid">
+    <div class="concept-card">
+      <div class="concept-index">01</div>
+      <div class="concept-niche">EdTech · Browser</div>
+      <div class="concept-title">A reading layer that closes the passive vocabulary gap</div>
+      <p class="concept-desc">Tracks which words you look up or encounter repeatedly without using in your own writing. Surfaces contextual definitions on hover. Resurfaces terms across different texts over time — moving words from recognised to reachable as a byproduct of normal reading.</p>
+      <div class="concept-gap"><strong>The gap</strong>Kindle's vocabulary builder is disconnected from the browser. No tool closes the passive-to-active gap as a byproduct of reading rather than a separate task.</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-index">02</div>
+      <div class="concept-niche">Fintech · Productivity</div>
+      <div class="concept-title">Subscription manager that connects cost to actual use</div>
+      <p class="concept-desc">Maps all active subscriptions to the accounts they are linked to, tracks renewal dates, flags unused services, and surfaces true monthly cost. Banks show transactions, not patterns.</p>
+      <div class="concept-gap"><strong>The gap</strong>Most people do not know what they pay monthly. No product connects subscriptions to actual usage data in one place.</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-index">03</div>
+      <div class="concept-niche">EdTech · AI</div>
+      <div class="concept-title">Real-time lesson generator for the gap you are stuck on right now</div>
+      <p class="concept-desc">Takes whatever topic a student is blocked on mid-session and generates a micro-lesson paced to their current understanding — not a fixed curriculum, not a pre-recorded video.</p>
+      <div class="concept-gap"><strong>The gap</strong>Existing EdTech teaches to the syllabus. None adapt to the specific gap a student hits mid-session.</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-index">04</div>
+      <div class="concept-niche">Media · AI</div>
+      <div class="concept-title">News reader that shows how a story got here</div>
+      <p class="concept-desc">Maps stories as connected threads rather than a feed — showing how a story evolved, which sources framed it differently, and what context is missing from the headline you clicked.</p>
+      <div class="concept-gap"><strong>The gap</strong>News feeds optimise for recency, not understanding. No product shows how a story connects to its own history.</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-index">05</div>
+      <div class="concept-niche">AI · Productivity</div>
+      <div class="concept-title">Digital twin trained on what you actually write and say</div>
+      <p class="concept-desc">A personal AI model trained on your writing patterns, vocabulary, note-taking habits, and communication style — producing outputs that sound like you, not an AI approximation of you.</p>
+      <div class="concept-gap"><strong>The gap</strong>Current AI assistants produce generic output regardless of who is prompting. A twin trained on your actual language would close that gap.</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-index">06</div>
+      <div class="concept-niche">Productivity · Chrome</div>
+      <div class="concept-title">Account-to-service tracker for people with too many Google accounts</div>
+      <p class="concept-desc">A Chrome extension that tracks which Google account is linked to which service, flags account conflicts before login friction hits, and gives a clear map of your multi-account digital life.</p>
+      <div class="concept-gap"><strong>The gap</strong>Managing multiple Google accounts across dozens of services is a daily frustration with no dedicated tooling.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="section-wrap">
+  <div class="section-header">
+    <div class="s-num">02b — Proof</div>
+    <div class="s-title-wrap">
+      <div class="s-title">What others say</div>
+      <div class="s-note">LinkedIn recommendations</div>
+    </div>
+  </div>
+  <div class="testimonials-wrap">
+    <div class="testimonial-card placeholder">
+      <div class="placeholder-label">Testimonial pending</div>
+      <div class="placeholder-note">Add a LinkedIn recommendation from your GM Infotech internship</div>
+    </div>
+    <div class="testimonial-card placeholder">
+      <div class="placeholder-label">Testimonial pending</div>
+      <div class="placeholder-note">Add a recommendation from Placements' Cell coordinator or Student Council</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section id="experience" class="section-wrap">
+  <div class="section-header">
+    <div class="s-num">03 — Experience</div>
+    <div class="s-title-wrap">
+      <div class="s-title">Where the work happened</div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-period"><strong>Nov 2025 – Present</strong>Hybrid · CHRIST University</div>
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">Newsletter Content Curator</div>
+      <div class="exp-org">Placements' Cell</div>
+      <ul class="exp-bullets">
+        <li>Ran the full newsletter pipeline across 10+ sources and 5+ contributors, reaching 40,000+ students bi-monthly</li>
+        <li>Consolidated 7 fragmented placement update types into one structured communication, cutting repetitive queries during peak placement weeks</li>
+        <li>Delivered the pilot edition through a university-declared Christmas holiday week, end-to-end without delay</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">Communication Systems</span>
+        <span class="exp-tag">Editorial Workflow</span>
+        <span class="exp-tag">Stakeholder Coordination</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-period"><strong>Oct – Nov 2025</strong>On-site · CHRIST University</div>
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">Department Representative</div>
+      <div class="exp-org">Placements' Cell</div>
+      <ul class="exp-bullets">
+        <li>First point of contact for placement queries across 140+ students — triaged, categorised, routed each concern to the right coordinator</li>
+        <li>Kept 3 coordinators in sync throughout a full placement cycle, preventing information gaps during high-pressure windows</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">Escalation Management</span>
+        <span class="exp-tag">Stakeholder Management</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-period"><strong>Nov 2025</strong>On-site · CHRIST University</div>
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">Master of Ceremonies + Operations</div>
+      <div class="exp-org">HR Vista 2.0 Conclave</div>
+      <ul class="exp-bullets">
+        <li>Served as MC for a two-day HR conclave bringing together professionals from top-tier companies, managing programme flow and live timing</li>
+        <li>Simultaneously contributed to logistics, hospitality, and operations throughout the event</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">Event Operations</span>
+        <span class="exp-tag">Logistics</span>
+        <span class="exp-tag">Stakeholder Coordination</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-period"><strong>Jul – Sep 2025</strong>Mumbai · Internship</div>
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">UI/UX Designer</div>
+      <div class="exp-org">GM Infotech</div>
+      <ul class="exp-bullets">
+        <li>Redesigned 7 pages and 14 user flows for BeingHR, building 25 reusable components across 3 device breakpoints</li>
+        <li>Deployed Figma designs to production in HTML/CSS, finding and fixing 4 breakpoint edge cases invisible in Figma</li>
+        <li>Documented design decisions and version history for future contributors</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">Figma</span><span class="exp-tag">HTML/CSS</span><span class="exp-tag">UX Documentation</span><span class="exp-tag">Responsive Design</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-period"><strong>Aug 2024 – Aug 2025</strong>On-site · Full-time</div>
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">Department Representative</div>
+      <div class="exp-org">Student Council · CHRIST University</div>
+      <ul class="exp-bullets">
+        <li>Triaged 70+ student issues by urgency and feasibility, escalating serious cases and resolving smaller ones directly</li>
+        <li>Maintained a website serving 5,000+ users with monthly content updates</li>
+        <li>Coordinated logistics for 1,500+ students across 100+ trips at 3 operational checkpoints</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="exp-tag">Operations</span><span class="exp-tag">Logistics</span><span class="exp-tag">Issue Triage</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── WRITING ─── -->
+<section id="writing" class="section-wrap">
+  <div class="section-header">
+    <div class="s-num">04 — Writing</div>
+    <div class="s-title-wrap">
+      <div class="s-title">Thinking out loud</div>
+      <div class="s-note">1 piece published · more coming</div>
+    </div>
+  </div>
+  <div class="writing-feature">
+    <div class="writing-left">
+      <div class="article-label">Medium · EdTech · Product Critique · 2025</div>
+      <div class="article-title">E-books were supposed to fix reading. They just moved the problem.</div>
+      <div class="article-sub">First published piece — tags: Product Design, UX, Reading, EdTech, PM</div>
+      <div class="article-pull">
+        "The friction that makes people drift from e-books toward AI summaries has less to do with ideas being too hard and more to do with hitting an unknown word mid-sentence and facing two bad options: skip it and lose precision, or leave the page and lose the flow."
+      </div>
+    </div>
+    <div class="writing-right">
+      <p class="writing-about">
+        This piece argues that passive vocabulary is a product problem, not a literacy one. It describes a reading layer that does not yet exist — one that tracks vocabulary through behaviour, surfaces contextual definitions without breaking flow, and closes the passive-to-active gap as a byproduct of reading rather than a separate habit to build.
+      </p>
+      <div class="coined">
+        <div class="coined-label">Term coined in this piece</div>
+        <div class="coined-term">Lexical debt</div>
+        <div class="coined-def">Vocabulary gaps that compound quietly over time through passive reading — recognised often enough to skip, understood rarely enough to use correctly.</div>
+      </div>
+      <div class="writing-tags">
+        <span class="wtag">Product Design</span>
+        <span class="wtag">UX</span>
+        <span class="wtag">Reading</span>
+        <span class="wtag">EdTech</span>
+        <span class="wtag">Product Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about" class="section-wrap">
+  <div class="section-header">
+    <div class="s-num">05 — About</div>
+    <div class="s-title-wrap">
+      <div class="s-title">In brief</div>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div class="about-left">
+      <p class="about-text">
+        Third-year BCA student at CHRIST University, Pune-Lavasa. Looking for internships in product management, product operations, business analysis, or a founder's office where <strong>figuring out what is broken and fixing it is the actual job.</strong>
+      </p>
+      <p class="about-text">
+        I write product critique publicly because I think the habit of noticing gaps and articulating them clearly is most of what product work is. The Medium article above is the first of several.
+      </p>
+    </div>
+    <div class="about-right">
+      <div class="skill-group">
+        <div class="skill-group-label">Product & Strategy</div>
+        <div class="skill-tags">
+          <span class="stag">User Problem Framing</span>
+          <span class="stag">PRD Writing</span>
+          <span class="stag">Requirements Engineering</span>
+          <span class="stag">Roadmap Prioritisation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Operations</div>
+        <div class="skill-tags">
+          <span class="stag">Stakeholder Management</span>
+          <span class="stag">Process Documentation</span>
+          <span class="stag">KPI Tracking</span>
+          <span class="stag">Cross-functional Coordination</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">UX & Design</div>
+        <div class="skill-tags">
+          <span class="stag">Figma</span>
+          <span class="stag">Flow Documentation</span>
+          <span class="stag">Prototyping</span>
+          <span class="stag">Component Systems</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BANNER ─── -->
+<section class="cta-banner" id="contact">
+  <div>
+    <div class="cta-heading">Looking for a <span>Summer / Fall 2026</span> internship.</div>
+    <div class="cta-sub">PM · Product Ops · Business Analysis · Founder's Office · Open to remote and Pune / Bengaluru</div>
+  </div>
+  <div class="cta-actions">
+    <a href="mailto:himalis106@gmail.com" class="cta-btn-primary">Email me directly →</a>
+    <a href="https://linkedin.com/in/himalisuresh" target="_blank" class="cta-btn-ghost">Connect on LinkedIn ↗</a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-copy">Himali Suresh · 2025 · Built in HTML</div>
+  <div class="footer-links">
+    <a href="mailto:himalis106@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/himalisuresh" target="_blank">LinkedIn</a>
+    <a href="https://github.com/codesbyhimali" target="_blank">GitHub</a>
+    <a href="#" target="_blank">Medium</a>
+  </div>
+</footer>
+
+</body>
+</html>
