@@ -1,1503 +1,1103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Himali Suresh — Product Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f7f4ef;
-    --surface: #edeae3;
-    --ink: #18181a;
-    --mid: #6b6860;
-    --faint: #c8c4bb;
-    --accent: #b84c1e;
-    --accent-soft: #f0e8e2;
-    --green: #2d6a4f;
-    --mono: 'DM Mono', monospace;
-    --serif: 'Instrument Serif', serif;
-    --sans: 'Instrument Sans', sans-serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  body::after {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 9999; mix-blend-mode: multiply;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 48px;
-    background: rgba(247,244,239,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--faint);
-  }
-
-  .nav-left { display: flex; align-items: center; gap: 32px; }
-
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 17px;
-    letter-spacing: -0.01em;
-  }
-
-  .nav-logo em { color: var(--accent); font-style: italic; }
-
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-
-  .nav-links a {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--mid);
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--ink); }
-
-  .nav-right { display: flex; align-items: center; gap: 16px; }
-
-  .nav-github {
-    display: flex; align-items: center; gap: 6px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: var(--mid);
-    border: 1px solid var(--faint);
-    padding: 6px 12px;
-    transition: all 0.2s;
-  }
-
-  .nav-github:hover { color: var(--ink); border-color: var(--ink); }
-
-  .nav-cta {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    background: var(--accent);
-    color: white;
-    padding: 7px 16px;
-    transition: opacity 0.2s;
-  }
-
-  .nav-cta:hover { opacity: 0.85; }
-
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    padding: 110px 48px 72px;
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 80px;
-    align-items: end;
-    border-bottom: 1px solid var(--faint);
-  }
-
-  .hero-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--mid);
-    letter-spacing: 0.06em;
-    margin-bottom: 28px;
-    background: var(--surface);
-    border: 1px solid var(--faint);
-    padding: 6px 14px;
-    width: fit-content;
-  }
-
-  .status-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #4caf50;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  .hero-name {
-    font-family: var(--serif);
-    font-size: clamp(52px, 6.5vw, 88px);
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    margin-bottom: 24px;
-  }
-
-  .hero-name .line2 {
-    color: var(--accent);
-    font-style: italic;
-    display: block;
-  }
-
-  /* ONE SENTENCE POSITIONING */
-  .hero-one-liner {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 16px;
-    line-height: 1.4;
-    letter-spacing: -0.01em;
-    max-width: 480px;
-  }
-
-  .hero-sub {
-    font-size: 13px;
-    color: var(--mid);
-    max-width: 440px;
-    line-height: 1.75;
-    margin-bottom: 36px;
-  }
-
-  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    background: var(--accent);
-    color: white;
-    padding: 10px 20px;
-    transition: opacity 0.2s;
-  }
-
-  .btn-primary:hover { opacity: 0.85; }
-
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: var(--mid);
-    border: 1px solid var(--faint);
-    padding: 10px 20px;
-    transition: all 0.2s;
-  }
-
-  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
-
-  .hero-right { padding-bottom: 8px; }
-
-  .now-block {
-    background: var(--surface);
-    border: 1px solid var(--faint);
-    padding: 28px;
-    margin-bottom: 20px;
-  }
-
-  .now-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px;
-  }
-
-  .now-label::after { content: ''; flex: 1; height: 1px; background: var(--faint); }
-
-  .now-item {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--faint);
-    display: grid;
-    grid-template-columns: 72px 1fr;
-    gap: 16px;
-    font-size: 13px;
-  }
-
-  .now-item:last-child { border-bottom: none; padding-bottom: 0; }
-
-  .now-item-key {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--mid);
-    letter-spacing: 0.06em;
-    padding-top: 2px;
-  }
-
-  .now-item-val { color: var(--ink); line-height: 1.5; font-size: 13px; }
-
-  .hero-numbers {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--faint);
-    border: 1px solid var(--faint);
-  }
-
-  .h-num {
-    background: var(--bg);
-    padding: 18px 14px;
-    text-align: center;
-  }
-
-  .h-num-val {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-style: italic;
-    color: var(--accent);
-    display: block;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .h-num-label {
-    font-family: var(--mono);
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--mid);
-  }
-
-  /* ─── SECTION SHELL ─── */
-  .section-wrap { border-top: 1px solid var(--faint); }
-
-  .section-header {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    border-bottom: 1px solid var(--faint);
-  }
-
-  .s-num {
-    padding: 24px 48px;
-    border-right: 1px solid var(--faint);
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-  }
-
-  .s-title-wrap {
-    padding: 24px 48px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 24px;
-  }
-
-  .s-title {
-    font-family: var(--serif);
-    font-size: 24px;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    color: var(--mid);
-  }
-
-  .s-note {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--mid);
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-  }
-
-  /* ─── WORK ─── */
-  .work-item {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    border-bottom: 1px solid var(--faint);
-    transition: background 0.25s;
-  }
-
-  .work-item:hover { background: var(--surface); }
-
-  .work-meta {
-    padding: 36px 48px;
-    border-right: 1px solid var(--faint);
-  }
-
-  .work-niche {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-
-  .work-period {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--mid);
-    line-height: 1.7;
-  }
-
-  .work-body { padding: 36px 48px; }
-
-  .work-problem {
-    font-family: var(--serif);
-    font-size: 19px;
-    font-style: italic;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    margin-bottom: 12px;
-    color: var(--ink);
-  }
-
-  .work-outcome {
-    font-size: 13px;
-    color: var(--mid);
-    margin-bottom: 20px;
-    line-height: 1.75;
-  }
-
-  .work-numbers {
-    display: flex;
-    gap: 28px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    padding: 16px 0;
-    border-top: 1px solid var(--faint);
-    border-bottom: 1px solid var(--faint);
-  }
-
-  .w-num-val {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-style: italic;
-    color: var(--ink);
-    display: block;
-    line-height: 1;
-    margin-bottom: 2px;
-  }
-
-  .w-num-label {
-    font-family: var(--mono);
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--mid);
-  }
-
-  .wd-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--mid);
-    margin-bottom: 8px;
-  }
-
-  .wd-item {
-    font-size: 13px;
-    color: var(--mid);
-    padding: 6px 0;
-    border-bottom: 1px solid var(--faint);
-    display: flex;
-    gap: 12px;
-    align-items: baseline;
-    line-height: 1.5;
-  }
-
-  .wd-item:last-child { border-bottom: none; }
-
-  .wd-item::before {
-    content: '→';
-    color: var(--accent);
-    font-size: 11px;
-    flex-shrink: 0;
-  }
-
-  /* ─── TECH STACK ─── */
-  .tech-grid {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-  }
-
-  .tech-left {
-    padding: 40px 48px;
-    border-right: 1px solid var(--faint);
-  }
-
-  .tech-right {
-    padding: 40px 48px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--faint);
-    align-content: start;
-  }
-
-  .tech-group {
-    background: var(--bg);
-    padding: 20px;
-  }
-
-  .tech-group-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--faint);
-  }
-
-  .tech-items {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .tech-item {
-    font-size: 12px;
-    color: var(--mid);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .tech-item::before {
-    content: '';
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: var(--faint);
-    flex-shrink: 0;
-  }
-
-  .tech-note {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--mid);
-    line-height: 1.7;
-  }
-
-  .tech-gh-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    margin-top: 12px;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 1px;
-    transition: gap 0.2s;
-  }
-
-  .tech-gh-link:hover { gap: 10px; }
-
-  /* ─── CONCEPTS ─── */
-  .concepts-intro {
-    padding: 24px 48px;
-    font-size: 13px;
-    color: var(--mid);
-    border-bottom: 1px solid var(--faint);
-    font-style: italic;
-    max-width: 680px;
-  }
-
-  .concepts-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .concept-card {
-    padding: 32px 28px;
-    border-right: 1px solid var(--faint);
-    border-bottom: 1px solid var(--faint);
-  }
-
-  .concept-card:nth-child(3n) { border-right: none; }
-
-  .concept-index {
-    font-family: var(--serif);
-    font-size: 36px;
-    font-style: italic;
-    color: var(--faint);
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-
-  .concept-niche {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
-
-  .concept-title {
-    font-family: var(--serif);
-    font-size: 16px;
-    font-style: italic;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-  }
-
-  .concept-desc {
-    font-size: 12px;
-    color: var(--mid);
-    line-height: 1.7;
-    margin-bottom: 12px;
-  }
-
-  .concept-gap {
-    font-size: 11px;
-    color: var(--ink);
-    padding: 10px 12px;
-    background: var(--accent-soft);
-    border-left: 2px solid var(--accent);
-    line-height: 1.6;
-  }
-
-  .concept-gap strong {
-    display: block;
-    font-family: var(--mono);
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 4px;
-  }
-
-  /* ─── TESTIMONIALS ─── */
-  .testimonials-wrap {
-    padding: 48px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
-  .testimonial-card {
-    border: 1px solid var(--faint);
-    padding: 28px;
-    background: var(--surface);
-    position: relative;
-  }
-
-  .testimonial-card.placeholder {
-    border-style: dashed;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 140px;
-    gap: 8px;
-  }
-
-  .placeholder-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--faint);
-  }
-
-  .placeholder-note {
-    font-size: 12px;
-    color: var(--faint);
-    font-style: italic;
-  }
-
-  .testimonial-quote {
-    font-family: var(--serif);
-    font-size: 15px;
-    font-style: italic;
-    line-height: 1.6;
-    color: var(--ink);
-    margin-bottom: 16px;
-  }
-
-  .testimonial-quote::before { content: '\201C'; color: var(--accent); }
-  .testimonial-quote::after { content: '\201D'; color: var(--accent); }
-
-  .testimonial-person {
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--mid);
-  }
-
-  .testimonial-person strong {
-    display: block;
-    font-size: 11px;
-    color: var(--ink);
-    margin-bottom: 2px;
-  }
-
-  /* ─── EXPERIENCE ─── */
-  .exp-item {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    border-bottom: 1px solid var(--faint);
-    padding: 32px 0;
-  }
-
-  .exp-meta {
-    padding: 0 48px;
-    border-right: 1px solid var(--faint);
-  }
-
-  .exp-period {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--mid);
-    letter-spacing: 0.06em;
-    line-height: 1.7;
-  }
-
-  .exp-period strong {
-    display: block;
-    font-family: var(--serif);
-    font-size: 13px;
-    font-style: italic;
-    color: var(--accent);
-    margin-bottom: 4px;
-    font-weight: 400;
-  }
-
-  .exp-body { padding: 0 48px; }
-
-  .exp-title {
-    font-family: var(--serif);
-    font-size: 17px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    margin-bottom: 2px;
-  }
-
-  .exp-org {
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--mid);
-    margin-bottom: 14px;
-  }
-
-  .exp-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 14px;
-  }
-
-  .exp-bullets li {
-    font-size: 13px;
-    color: var(--mid);
-    padding-left: 18px;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .exp-bullets li::before {
-    content: '·';
-    position: absolute;
-    left: 4px;
-    color: var(--accent);
-    font-size: 16px;
-    line-height: 1.3;
-  }
-
-  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-  .exp-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 3px 10px;
-    border: 1px solid var(--faint);
-    color: var(--mid);
-  }
-
-  /* ─── WRITING ─── */
-  .writing-feature {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .writing-left {
-    padding: 48px;
-    border-right: 1px solid var(--faint);
-    background: var(--surface);
-  }
-
-  .writing-right { padding: 48px; }
-
-  .article-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  .article-title {
-    font-family: var(--serif);
-    font-size: 24px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-  }
-
-  .article-sub {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--mid);
-    margin-bottom: 20px;
-  }
-
-  .article-pull {
-    font-size: 13px;
-    color: var(--ink);
-    line-height: 1.8;
-    border-left: 2px solid var(--accent);
-    padding-left: 16px;
-    font-style: italic;
-  }
-
-  .writing-about {
-    font-size: 13px;
-    color: var(--mid);
-    line-height: 1.8;
-    margin-bottom: 24px;
-  }
-
-  .coined {
-    padding: 18px 20px;
-    background: var(--surface);
-    border: 1px solid var(--faint);
-    margin-bottom: 24px;
-  }
-
-  .coined-label {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--mid);
-    margin-bottom: 4px;
-  }
-
-  .coined-term {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-
-  .coined-def { font-size: 12px; color: var(--mid); line-height: 1.6; }
-
-  .writing-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .wtag { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border: 1px solid var(--faint); color: var(--mid); }
-
-  /* ─── ABOUT ─── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .about-left {
-    padding: 48px;
-    border-right: 1px solid var(--faint);
-  }
-
-  .about-text {
-    font-size: 14px;
-    line-height: 1.85;
-    color: var(--mid);
-    margin-bottom: 20px;
-  }
-
-  .about-text strong { color: var(--ink); font-weight: 500; }
-
-  .about-right { padding: 48px; }
-
-  .skill-group { margin-bottom: 24px; }
-
-  .skill-group-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 10px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--faint);
-  }
-
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-  .stag {
-    font-size: 12px;
-    padding: 3px 10px;
-    border: 1px solid var(--faint);
-    color: var(--mid);
-    background: var(--surface);
-  }
-
-  /* ─── CTA BANNER ─── */
-  .cta-banner {
-    background: var(--ink);
-    padding: 56px 48px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 40px;
-  }
-
-  .cta-heading {
-    font-family: var(--serif);
-    font-size: 32px;
-    font-style: italic;
-    font-weight: 400;
-    color: white;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
-  }
-
-  .cta-heading span { color: #e8a080; }
-
-  .cta-sub {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.06em;
-  }
-
-  .cta-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-
-  .cta-btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    background: var(--accent);
-    color: white;
-    padding: 12px 24px;
-    transition: opacity 0.2s;
-    white-space: nowrap;
-  }
-
-  .cta-btn-primary:hover { opacity: 0.85; }
-
-  .cta-btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.5);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 12px 24px;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-
-  .cta-btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.4); }
-
-  /* ─── FOOTER ─── */
-  footer {
-    border-top: 1px solid var(--faint);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    padding: 32px 48px;
-    gap: 40px;
-  }
-
-  .footer-copy {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint);
-    letter-spacing: 0.04em;
-  }
-
-  .footer-links { display: flex; gap: 24px; }
-
-  .footer-links a {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--mid);
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--accent); }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-name { animation: fadeUp 0.9s 0.1s both; }
-  .hero-one-liner { animation: fadeUp 0.9s 0.2s both; }
-  .hero-sub { animation: fadeUp 0.9s 0.3s both; }
-  .hero-actions { animation: fadeUp 0.9s 0.4s both; }
-  .now-block { animation: fadeUp 0.9s 0.25s both; }
-  .hero-numbers { animation: fadeUp 0.9s 0.4s both; }
-
-  ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--faint); }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Himali Suresh — Product Builder, Business Analyst, Software Developer">
+  <title>Himali Suresh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0e0c;
+      --paper: #f5f1ea;
+      --cream: #ede8df;
+      --rust: #c4572a;
+      --slate: #0f0e0c;
+      --muted: #0f0e0c;
+      --rule: #d4cfc6;
+      --highlight: #e8e0d0;
+      --max-width: 960px;
+      --header-h: 60px;
+    }
+
+    html.dark {
+      --paper: #0f0e0c;
+      --ink: #f5f1ea;
+      --slate: var(--ink);
+      --muted: var(--ink);
+    }
+    html.dark .tech-tag {
+      background: var(--paper);
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+    html.dark body::before { opacity: 0.08; }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-size: 20px;
+      line-height: 1.7;
+      cursor: crosshair;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    a { color: var(--rust); text-decoration: none; }
+    a:hover { color: var(--ink); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--paper); border-bottom: 1px solid var(--rule); height: var(--header-h);
+    }
+    .header-inner {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      cursor: pointer;
+    }
+      .logo:hover { color: var(--rust); }
+    .theme-toggle {
+      font-size: 20px;
+      line-height: 1;
+      background: none;
+      border: 1px solid var(--rule);
+      cursor: pointer;
+      color: var(--muted);
+      padding: 4px 10px;
+      margin-right: 4px;
+      transition: color 0.2s;
+    }
+    .theme-toggle:hover { color: var(--ink); }
+    .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
+    .nav-link {
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--muted);
+      padding: 6px 14px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--ink); background: none; }
+    .nav-link.active { color: var(--ink); background: none; }
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .mobile-menu-btn span { display: block; width: 24px; height: 3px; background: var(--ink); margin: 6px 0; transition: 0.2s; }
+    .mobile-menu-btn.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+    .hero {
+      padding: 80px 0 60px;
+      min-height: calc(100vh - var(--header-h));
+      display: flex;
+      align-items: center;
+    }
+    .hero-pfp {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--rule);
+      margin-bottom: 32px;
+      display: block;
+    }
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(65px, 7.5vw, 90px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero-headline {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-weight: 400;
+      border-left: 2px solid var(--rust);
+      padding-left: 20px;
+      max-width: 620px;
+      line-height: 1.8;
+    }
+    .hero-about {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      max-width: 660px;
+    }
+    .hero-about p { margin-bottom: 12px; }
+    .hero-about p:last-child { margin-bottom: 0; }
+    .social-links { display: flex; flex-wrap: wrap; gap: 24px; }
+    .social-link {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+    }
+    .social-link:hover { color: var(--rust); }
+    .social-link svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .page-header { padding: 48px 0 32px; border-bottom: 1px solid var(--rule); margin-bottom: 32px; }
+    .page-header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 40px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .page-header p { font-size: 15px; color: var(--muted); }
+
+    .projects-grid { padding: 0 0 80px; display: flex; flex-direction: column; gap: 0; }
+    .project-card {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--rule);
+      cursor: pointer;
+      transition: padding 0.2s;
+      position: relative;
+    }
+    .project-card:last-child { border-bottom: none; }
+    .project-card:hover { padding-left: 16px; }
+    .project-card::after {
+      content: '→';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      color: var(--rust);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .project-card:hover::after { opacity: 1; }
+    .project-card-header { margin-bottom: 10px; }
+    .project-domain {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--rust);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .project-domain::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--rust);
+    }
+    .project-card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .project-card-tagline {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .project-card-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-tag {
+      font-size: 13px;
+      padding: 4px 12px;
+      border: 1px solid var(--rule);
+      color: var(--slate);
+      background: var(--cream);
+      letter-spacing: 0.04em;
+    }
+
+    .modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3); z-index: 200; justify-content: center; align-items: flex-start;
+      padding: 60px 20px; overflow-y: auto;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-content {
+      background: var(--paper);
+      max-width: 780px; width: 100%;
+      padding: 48px;
+      position: relative;
+      animation: modalIn 0.25s ease;
+      border: 1px solid var(--rule);
+    }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px; width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--rule); background: var(--paper);
+      cursor: pointer; color: var(--muted); font-size: 22px;
+    }
+    .modal-close:hover { background: var(--cream); color: var(--ink); }
+    .modal-domain {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--rust);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .modal-domain::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--rust);
+    }
+    .modal-title {
+      font-family: 'Fraunces', serif;
+      font-size: 35px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .modal-tagline {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--rule);
+      font-style: italic;
+    }
+    .modal-section { margin-bottom: 28px; }
+    .modal-section h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .modal-section p { font-size: 16px; color: var(--slate); line-height: 1.8; }
+    .modal-section ul { list-style: none; padding: 0; }
+    .modal-section ul li {
+      font-size: 16px;
+      color: var(--slate);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+    .modal-section ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--rust);
+      font-size: 14px;
+    }
+    .modal-techs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .modal-links { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule); }
+    .modal-link {
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--rust);
+    }
+    .modal-link:hover { color: var(--ink); }
+    .placeholder { font-size: 14px; color: var(--muted); font-style: italic; }
+
+    .cs-grid { padding: 0 0 80px; display: flex; flex-direction: column; gap: 0; }
+    .cs-card {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--rule);
+      cursor: pointer;
+      transition: padding 0.2s;
+      position: relative;
+    }
+    .cs-card:last-child { border-bottom: none; }
+    .cs-card:hover { padding-left: 16px; }
+    .cs-card::after {
+      content: '→';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      color: var(--rust);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .cs-card:hover::after { opacity: 1; }
+    .cs-title {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .cs-tagline {
+      font-size: 15px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .cs-section { margin-bottom: 24px; }
+    .cs-section:last-child { margin-bottom: 0; }
+    .cs-section h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--rust);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .cs-section p { font-size: 16px; color: var(--slate); line-height: 1.8; }
+    .cs-section ul { list-style: none; padding: 0; }
+    .cs-section ul li {
+      font-size: 16px;
+      color: var(--slate);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+    .cs-section ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--rust);
+    }
+
+    .findings-grid { padding: 0 0 80px; display: flex; flex-direction: column; gap: 0; }
+    .finding-card {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .finding-card:last-child { border-bottom: none; }
+    .finding-card h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .finding-block { margin-bottom: 24px; }
+    .finding-block:last-child { margin-bottom: 0; }
+    .finding-block h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--rust);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .finding-block p { font-size: 16px; color: var(--slate); line-height: 1.8; margin-bottom: 10px; }
+    .finding-block p:last-child { margin-bottom: 0; }
+    .finding-block ul { list-style: none; padding: 0; }
+    .finding-block ul li {
+      font-size: 16px;
+      color: var(--slate);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+    .finding-block ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--rust);
+    }
+
+    .site-footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--rule);
+      text-align: center;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 36px; margin-bottom: 12px; }
+    .footer-link {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .footer-link:hover { color: var(--rust); }
+    .footer-copy { font-size: 13px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-name { animation: fadeUp 0.8s 0.1s both; }
+    .hero-headline { animation: fadeUp 0.8s 0.3s both; }
+    .hero-about { animation: fadeUp 0.8s 0.5s both; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--paper); }
+    ::-webkit-scrollbar-thumb { background: var(--rule); }
+
+    @media (max-width: 768px) {
+      :root { --header-h: 56px; }
+      .header-inner { padding: 0 16px; }
+      .nav-links {
+        display: none; position: absolute; top: var(--header-h); left: 0; right: 0;
+        background: var(--paper); border-bottom: 1px solid var(--rule);
+        flex-direction: column; padding: 16px; gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-link { padding: 10px 14px; font-size: 15px; }
+      .mobile-menu-btn { display: block; }
+      .theme-toggle { font-size: 18px; padding: 2px 8px; }
+      .hero { padding: 40px 0 48px; min-height: auto; }
+      .hero-name { font-size: clamp(40px, 12vw, 56px); }
+      .hero-pfp { width: 100px; height: 100px; margin-bottom: 24px; }
+      .hero-headline { font-size: 15px; padding-left: 16px; }
+      .hero-about { font-size: 15px; }
+      .social-link { font-size: 13px; }
+      .social-link svg { width: 16px; height: 16px; }
+      .container { padding: 0 16px; }
+      .page-header { padding: 32px 0 24px; }
+      .page-header h1 { font-size: 30px; }
+      .page-header p { font-size: 14px; }
+      .modal-content { padding: 24px; }
+      .modal-title { font-size: 26px; }
+      .modal-tagline { font-size: 15px; }
+      .modal-section p { font-size: 15px; }
+      .modal-section ul li { font-size: 15px; }
+      .project-card { padding: 24px 0; }
+      .project-card:hover { padding-left: 8px; }
+      .project-card-title { font-size: 24px; }
+      .project-card-tagline { font-size: 14px; }
+      .project-domain { font-size: 12px; }
+      .tech-tag { font-size: 12px; }
+      .cs-card { padding: 24px 0; }
+      .cs-card:hover { padding-left: 8px; }
+      .cs-title { font-size: 22px; }
+      .cs-tagline { font-size: 14px; }
+      .cs-section p { font-size: 15px; }
+      .cs-section ul li { font-size: 15px; }
+      .finding-card { padding: 24px 0; }
+      .finding-card h2 { font-size: 22px; }
+      .finding-block p { font-size: 15px; }
+      .finding-block ul li { font-size: 15px; }
+      .footer-links { flex-direction: column; gap: 16px; align-items: center; }
+      .footer-link { font-size: 13px; }
+      .site-footer { padding: 32px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 32px 0 40px; }
+      .hero-name { font-size: 36px; }
+      .hero-pfp { width: 80px; height: 80px; margin-bottom: 20px; }
+      .social-links { flex-direction: column; gap: 14px; }
+      .page-header h1 { font-size: 26px; }
+      .project-card-title { font-size: 20px; }
+      .project-card-tagline { font-size: 14px; }
+      .cs-title { font-size: 20px; }
+      .finding-card h2 { font-size: 20px; }
+      .modal-content { padding: 20px 16px; }
+      .modal-title { font-size: 22px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
-<nav>
-  <div class="nav-left">
-    <div class="nav-logo">Himali <em>Suresh</em></div>
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#concepts">Concepts</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#writing">Writing</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </div>
-  <div class="nav-right">
-    <a href="https://github.com/codesbyhimali" target="_blank" class="nav-github">
-      ↗ GitHub
-    </a>
-    <a href="mailto:himalis106@gmail.com" class="nav-cta">Get in touch</a>
-  </div>
-</nav>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo" onclick="nav('home')">Himali Suresh</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><button class="nav-link active" data-page="home" onclick="nav('home')">Home</button></li>
+          <li><button class="nav-link" data-page="projects" onclick="nav('projects')">Projects</button></li>
+          <li><button class="nav-link" data-page="case-studies" onclick="nav('case-studies')">Case Studies</button></li>
+          <li><button class="nav-link" data-page="findings" onclick="nav('findings')">Findings</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<!-- ─── HERO ─── -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-status">
-      <span class="status-dot"></span>
-      Open to internships — PM · Product Ops · BA · Founder's Office
-    </div>
-    <h1 class="hero-name">
-      Himali
-      <span class="line2">Suresh</span>
-    </h1>
-    <p class="hero-one-liner">I find where systems create friction for people and work on removing it.</p>
-    <p class="hero-sub">
-      BCA student at CHRIST University, Pune. My work spans product, operations, and UX across a D2C venture, a live platform redesign, and communication systems built for scale.
-    </p>
-    <div class="hero-actions">
-      <a href="mailto:himalis106@gmail.com" class="btn-primary">Email me →</a>
-      <a href="https://linkedin.com/in/himalisuresh" target="_blank" class="btn-ghost">LinkedIn ↗</a>
-      <a href="https://github.com/codesbyhimali" target="_blank" class="btn-ghost">GitHub ↗</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="now-block">
-      <div class="now-label">Now</div>
-      <div class="now-item">
-        <span class="now-item-key">Building</span>
-        <span class="now-item-val">Speculative concepts in EdTech, Fintech, and Productivity</span>
-      </div>
-      <div class="now-item">
-        <span class="now-item-key">Writing</span>
-        <span class="now-item-val">Product critique on Medium — first piece published</span>
-      </div>
-      <div class="now-item">
-        <span class="now-item-key">Reading</span>
-        <span class="now-item-val">Why e-books haven't solved the passive vocabulary problem</span>
-      </div>
-      <div class="now-item">
-        <span class="now-item-key">Looking</span>
-        <span class="now-item-val">Internship — Summer / Fall 2026</span>
-      </div>
-    </div>
-    <div class="hero-numbers">
-      <div class="h-num">
-        <span class="h-num-val">40K+</span>
-        <span class="h-num-label">Students reached</span>
-      </div>
-      <div class="h-num">
-        <span class="h-num-val">95.4%</span>
-        <span class="h-num-label">Sell-through</span>
-      </div>
-      <div class="h-num">
-        <span class="h-num-val">5K+</span>
-        <span class="h-num-label">Users served</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── WORK (SHIPPED) ─── -->
-<section id="work" class="section-wrap">
-  <div class="section-header">
-    <div class="s-num">01 — Work</div>
-    <div class="s-title-wrap">
-      <div class="s-title">Shipped — problems I was handed, and what changed</div>
-      <div class="s-note">4 projects</div>
-    </div>
-  </div>
-
-  <!-- BeingHR -->
-  <div class="work-item">
-    <div class="work-meta">
-      <div class="work-niche">UX · HR Tech</div>
-      <div class="work-period">Jul – Sep 2025<br>GM Infotech<br>Mumbai · Internship</div>
-    </div>
-    <div class="work-body">
-      <div class="work-problem">A platform where users couldn't find what they came for</div>
-      <div class="work-outcome">BeingHR had fragmented navigation, inconsistent UI patterns, and no clear path from landing to task completion. I redesigned it end-to-end: mapping every flow before touching layouts, building a component library to enforce consistency, and deploying to production to catch browser edge cases that Figma cannot show.</div>
-      <div class="work-numbers">
-        <div class="w-num"><span class="w-num-val">7</span><span class="w-num-label">Pages redesigned</span></div>
-        <div class="w-num"><span class="w-num-val">14</span><span class="w-num-label">Flows mapped</span></div>
-        <div class="w-num"><span class="w-num-val">25</span><span class="w-num-label">Reusable components</span></div>
-        <div class="w-num"><span class="w-num-val">3</span><span class="w-num-label">Device breakpoints</span></div>
-      </div>
-      <div class="wd-label">Decisions that shaped the outcome</div>
-      <div class="wd-item">Built the component library before touching any page layout so visual consistency was structural, not cosmetic</div>
-      <div class="wd-item">Mapped all 14 flows before wireframing to surface navigation conflicts early, not after screens were done</div>
-      <div class="wd-item">Deployed to HTML/CSS in production and caught 4 edge cases invisible in Figma</div>
-    </div>
-  </div>
-
-  <!-- RAISEit -->
-  <div class="work-item">
-    <div class="work-meta">
-      <div class="work-niche">Product · Real-time</div>
-      <div class="work-period">May – Jun 2025<br>Personal project<br>Live on Vercel</div>
-    </div>
-    <div class="work-body">
-      <div class="work-problem">Auction UIs that break when two users act at the same time</div>
-      <div class="work-outcome">RAISEit is a real-time auction platform built in React.js. The hard problem wasn't the UI — it was what happens at the edges: simultaneous bids, budget enforcement, state conflicts. I wrote the logic spec before building to avoid drift, and designed for failure states first.</div>
-      <div class="work-numbers">
-        <div class="w-num"><span class="w-num-val">4</span><span class="w-num-label">State transitions mapped</span></div>
-        <div class="w-num"><span class="w-num-val">React</span><span class="w-num-label">Stack</span></div>
-        <div class="w-num"><span class="w-num-val">Live</span><span class="w-num-label">Deployed</span></div>
-      </div>
-      <div class="wd-label">Decisions that shaped the outcome</div>
-      <div class="wd-item">Wrote a state transition spec (active → outbid → won/lost) before any implementation to prevent logic drift mid-build</div>
-      <div class="wd-item">Enforced budget constraints on the UI layer for immediate feedback without a server round-trip</div>
-      <div class="wd-item">Designed competitive failure states first, because that is where the user experience actually breaks</div>
-    </div>
-  </div>
-
-  <!-- Twisted Luxuries -->
-  <div class="work-item">
-    <div class="work-meta">
-      <div class="work-niche">Product Ops · D2C</div>
-      <div class="work-period">Oct 2024 – Present<br>Twisted Luxuries<br>Co-founder</div>
-    </div>
-    <div class="work-body">
-      <div class="work-problem">Running a product with no margin for guessing</div>
-      <div class="work-outcome">Co-owned a D2C product business across 4 production cycles. Pricing, inventory, and customer feedback all moved at once. Used sell-through rate as the primary health signal rather than revenue because it caught inventory risk earlier and more accurately.</div>
-      <div class="work-numbers">
-        <div class="w-num"><span class="w-num-val">95.4%</span><span class="w-num-label">Sell-through</span></div>
-        <div class="w-num"><span class="w-num-val">1,100</span><span class="w-num-label">Units managed</span></div>
-        <div class="w-num"><span class="w-num-val">120+</span><span class="w-num-label">Customer signals</span></div>
-        <div class="w-num"><span class="w-num-val">−12%</span><span class="w-num-label">Unsold stock</span></div>
-      </div>
-      <div class="wd-label">Decisions that shaped the outcome</div>
-      <div class="wd-item">Ran 5 pricing iterations based on direct customer signal across 4 cycles, not assumption</div>
-      <div class="wd-item">Chose sell-through over revenue as the primary metric to surface inventory risk before it compounded</div>
-      <div class="wd-item">Discontinued two underperforming variants after cycle 2 to concentrate demand on what was working</div>
-    </div>
-  </div>
-
-  <!-- Placement Newsletter -->
-  <div class="work-item">
-    <div class="work-meta">
-      <div class="work-niche">Ops · Comms</div>
-      <div class="work-period">Nov 2025 – Present<br>Placements' Cell<br>CHRIST University</div>
-    </div>
-    <div class="work-body">
-      <div class="work-problem">40,000 students with no single reliable source for placement updates</div>
-      <div class="work-outcome">Designed and ran the placement newsletter from scratch — gathering from 10+ sources, coordinating 5+ contributors, shipping bi-monthly. Consolidated 7 fragmented update types into one structured communication. Delivered the pilot edition through the university's declared Christmas holiday week.</div>
-      <div class="work-numbers">
-        <div class="w-num"><span class="w-num-val">40K+</span><span class="w-num-label">Students reached</span></div>
-        <div class="w-num"><span class="w-num-val">7</span><span class="w-num-label">Update types unified</span></div>
-        <div class="w-num"><span class="w-num-val">10+</span><span class="w-num-label">Sources coordinated</span></div>
-      </div>
-      <div class="wd-label">Decisions that shaped the outcome</div>
-      <div class="wd-item">Structured content around what students were most anxious about, not what was easiest to compile</div>
-      <div class="wd-item">Set a bi-monthly cadence to create predictable expectations and reduce query spikes between issues</div>
-      <div class="wd-item">Shipped the pilot edition solo through a declared holiday week rather than delay the cycle</div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── TECH STACK ─── -->
-<section class="section-wrap">
-  <div class="section-header">
-    <div class="s-num">01b — Stack</div>
-    <div class="s-title-wrap">
-      <div class="s-title">What I actually build with</div>
-      <a href="https://github.com/codesbyhimali" target="_blank" class="s-note" style="color: var(--accent);">↗ github.com/codesbyhimali</a>
-    </div>
-  </div>
-  <div class="tech-grid">
-    <div class="tech-left">
-      <p class="tech-note">Technical enough to understand what engineers are building and to build quick prototypes myself. Not positioning as an engineer — positioning as someone who can work in the same room as one without slowing things down.</p>
-      <a href="https://github.com/codesbyhimali" target="_blank" class="tech-gh-link">View GitHub repos →</a>
-    </div>
-    <div class="tech-right">
-      <div class="tech-group">
-        <div class="tech-group-label">Languages</div>
-        <div class="tech-items">
-          <span class="tech-item">JavaScript</span>
-          <span class="tech-item">HTML5 / CSS3</span>
-          <span class="tech-item">Python (basic)</span>
-          <span class="tech-item">Java (OOP)</span>
+  <main class="page active" id="page-home">
+    <section class="hero">
+      <div class="container">
+        <img src="pfp.jpeg" alt="Himali Suresh" class="hero-pfp">
+        <h1 class="hero-name">Himali Suresh</h1>
+        <p class="hero-headline">Product builder who ships. Business analysis + full-stack development. Systems that work in production.</p>
+        <div class="hero-about">
+          <p>BCA (Hons. with Research) at CHRIST University, Pune-Lavasa. I work across the full stack: requirements gathering, stakeholder interviews, database design, API development, and deployment.</p>
+          <p>Projects span hospitality operations, campus administration, fintech, community platforms, and workflow automation. Every project starts with a problem I've observed or validated through stakeholder interviews.</p>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/1himali" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:himalis106@gmail.com" class="social-link">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            himalis106@gmail.com
+          </a>
         </div>
       </div>
-      <div class="tech-group">
-        <div class="tech-group-label">Frameworks</div>
-        <div class="tech-items">
-          <span class="tech-item">React.js</span>
-          <span class="tech-item">Tailwind CSS</span>
-          <span class="tech-item">Node.js (basic)</span>
-          <span class="tech-item">REST APIs</span>
+    </section>
+  </main>
+
+  <main class="page" id="page-projects">
+    <div class="container">
+      <div class="page-header">
+        <h1>Projects</h1>
+        <p>Shipped systems across hospitality, campus administration, fintech, community, and automation.</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </main>
+
+  <main class="page" id="page-case-studies">
+    <div class="container">
+      <div class="page-header">
+        <h1>Case Studies</h1>
+        <p>Product thinking applied to real-world problems across fintech, social, payments, and AI.</p>
+      </div>
+      <div class="cs-grid" id="csGrid"></div>
+    </div>
+  </main>
+
+  <main class="page" id="page-findings">
+    <div class="container">
+      <div class="page-header">
+        <h1>Findings</h1>
+        <p>Cross-domain observations on product strategy, market dynamics, and professional value.</p>
+      </div>
+      <div class="findings-grid" id="findingsGrid"></div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-content" id="modalContent">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:himalis106@gmail.com" class="footer-link">Email</a>
+        <a href="https://github.com/1himali" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      </div>
+      <div class="footer-copy">Portfolio 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    const projects = [
+      {
+        title: 'RAISEit',
+        tagline: 'A real-time auction engine with structured fundraising workflows, designed for transparent competitive bidding at scale.',
+        domain: 'Events / Fundraising',
+        techs: ['Next.js', 'React', 'Tailwind CSS', 'Node.js', 'REST APIs', 'WebSockets', 'MongoDB', 'JWT'],
+        problem: 'Auction-based fundraising and team-selection events are typically run manually on spreadsheets or whiteboards. This creates no real-time visibility for participants, high administrative overhead during live rounds, no budget enforcement, no permanent bid record, and no scalable format for multi-team simultaneous events.',
+        solution: 'A hosted web platform where admins configure auctions end-to-end (budgets, team limits, player pools, round timers); teams join via unique invitation codes; live WebSocket connections push bid updates to every participant instantly; server-side timers auto-complete rounds; MongoDB persists complete bid history and budget deductions transparently.',
+        outcome: [
+          'Eliminated manual spreadsheet management for multi-team auction events',
+          'Server-enforced budget constraints removed human error and dispute possibilities in bidding',
+          'Auto-complete logic enabled unattended auction closure, reducing admin presence requirement',
+          'Transparent bid history visible to all participants increased trust in auction outcomes',
+          'Platform accessible as a live deployed website, enabling use by external organisers'
+        ],
+        links: { github: 'https://github.com/1himali/raiseit', demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'Property Management System (PMS)',
+        tagline: 'A full-stack Property Management System built from scratch — covering rooms, dining, billing, inventory, payroll, and analytics for independent hospitality businesses.',
+        domain: 'Hospitality / SaaS',
+        techs: ['Java 21', 'Spring Boot 3.5', 'PostgreSQL', 'Flyway', 'JWT', 'Swagger', 'JUnit 5', 'Testcontainers'],
+        problem: 'Independent hospitality businesses — B&Bs, hostels, small hotels — operate across fragmented tools: manual registers for rooms, separate POS for restaurant, spreadsheets for inventory and payroll, and no unified analytics view. Enterprise PMS solutions are priced for large hotels.',
+        solution: 'A unified Spring Boot application serving a REST API documented via Swagger/OpenAPI, a static browser UI with role-gated navigation, PostgreSQL with 15 Flyway migrations, JWT with four role tiers, and integrated modules: rooms, restaurant, billing, inventory, payroll, analytics, activity log, and AI assistant.',
+        outcome: [
+          '85 automated tests across 12 test classes validate system correctness',
+          '15 Flyway database migrations provide a complete, reproducible schema history',
+          'Four-role access control enforced server-side across every API endpoint',
+          'Swagger UI generates live API documentation enabling third-party developer onboarding',
+          'Mock mode allows safe testing of third-party integrations without live API calls',
+          'A B&B with 10-15 rooms could replace 3-4 separate tools with this single system'
+        ],
+        links: { github: 'https://github.com/1himali/hospitality-operations', demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'My Hood',
+        tagline: 'A neighbourhood-first platform connecting residents through local discovery, community updates, and shared civic participation.',
+        domain: 'Community',
+        techs: ['HTML', 'CSS', 'JavaScript'],
+        problem: 'Residential communities lack a structured digital space for discovering reliable local services, sharing hyperlocal updates, coordinating civic issues, and building neighbourhood trust. WhatsApp groups are chaotic. No Indian platform owns neighbourhood-scoped social interaction with verification.',
+        solution: 'A community platform scoped to a defined geographic boundary providing a curated local service directory, neighbourhood-scoped update feed, community event discovery, and resident-to-resident interaction with shared local context.',
+        outcome: [
+          'Clear product vision for underserved urban Indian market segment',
+          'Information architecture separates discovery, updates, and community interaction',
+          'B2B2C model: sold to RWAs and housing societies, used by residents'
+        ],
+        links: { github: null, demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'Vibranium',
+        tagline: 'AI-powered SaaS product intelligence workspace with market analysis, competitor discovery, and strategic insights.',
+        domain: 'SaaS / AI',
+        techs: ['React 18', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Recharts', 'Firebase Auth', 'Firestore', 'FastAPI'],
+        problem: 'Product teams lack a unified intelligence workspace to analyse market positioning, track competitor landscapes, and derive strategic insights for their SaaS products. Existing tools are fragmented and disconnected.',
+        solution: 'An authenticated multi-page SaaS intelligence dashboard with product profile setup, market intelligence analysis, product health KPIs, competitor discovery, strategic insights, and an AI assistant — all powered by Firebase auth/data layer and a FastAPI backend.',
+        outcome: [
+          'Multi-page authenticated dashboard with 7-step product setup wizard',
+          'Real-time market analysis with sentiment scoring and feature comparison',
+          'Product health monitoring with DAU/MAU, revenue, and feature usage analytics',
+          'Competitor discovery with positioning scatter plots and market gap detection',
+          'AI assistant with chat interface for strategic recommendations'
+        ],
+        links: { github: 'https://github.com/1himali/Vibranium', demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'Email Automation System (RPA)',
+        tagline: 'A UiPath-based RPA solution that eliminates repetitive email workflows for university administrative staff managing 22 student clubs.',
+        domain: 'Workflow Automation',
+        techs: ['UiPath', 'Google Sheets', 'Gmail'],
+        problem: 'Manual weekly email workflow for 22 clubs: Saturday reminders, report follow-ups, signature correction requests, and account-switching between two email IDs. No centralised tracking across 65+ events per semester.',
+        solution: 'UiPath RPA bot connected to a central Google Sheets tracking spreadsheet. Status-based trigger logic: no event activity → send reminder; report awaited → send follow-up; signatures incomplete → send correction. Account-routing eliminates wrong-account sends.',
+        outcome: [
+          'Stakeholder interview conducted and documented (Q&A Format, 14-Feb-2026)',
+          '22 clubs, 65+ events per semester covered by the automation scope',
+          '15+ automated email response templates for different status/trigger combinations',
+          'Solution validated by stakeholder as addressing the primary pain point',
+          'Weekly manual email drafting time reduced to near-zero'
+        ],
+        links: { github: null, demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'Retail AI Platform',
+        tagline: 'Real-time analytics platform for retail environments using computer vision, LLMs, and AI-powered multi-agent insights.',
+        domain: 'AI / Retail',
+        techs: ['Python', 'Angular', 'PostgreSQL', 'FastAPI', 'YOLOv8', 'OpenCV', 'Ollama LLM', 'Multi-Agent'],
+        problem: 'Retail stores lack real-time visibility into foot traffic patterns, congestion hotspots, and operational inefficiencies. Manual monitoring is labour-intensive and provides no actionable analytics or predictive insights.',
+        solution: 'A comprehensive platform combining YOLOv8 computer vision for real-time people detection, a multi-agent LLM system for intelligent alerting, and an Angular dashboard with live metrics, historical analytics, trend prediction, and staffing recommendations.',
+        outcome: [
+          'Real-time people counting and congestion detection via YOLOv8 CNN',
+          'Multi-agent LLM system for coordinated monitoring and intelligent alert generation',
+          'Live Angular dashboard with 3-second refresh intervals and historical trend analysis',
+          'Statistical analytics for peak hour detection and staffing optimisation',
+          'RAG-based knowledge system for contextual alert generation'
+        ],
+        links: { github: 'https://github.com/1himali/smart-retail-ai-system', demo: null, screenshot: '<PROJECT SCREENSHOT>' }
+      }
+    ];
+
+    const caseStudies = [
+      {
+        title: 'Why Spotify Doesnt Have Chat',
+        tagline: 'What Spotify learned from killing chat in 2017 that still shapes the product today.',
+        problem: 'Spotify tried broad social features (inbox, friend activity, comments). Nobody used them meaningfully. Users dont want to manage a social identity inside a music app.',
+        analysis: [
+          'Spotify returned to messaging in 2025 with Messages a constrained one-on-one feature for sharing content only',
+          'Every social feature Spotify ships (Blend, Jam, Collaborative Playlists, Messages) follows the same pattern: they dont require you to perform',
+          'Connection is a byproduct of listening, never a demand'
+        ],
+        insights: [
+          'Spotify structured its product around listening as the primary act, with sociality as a consequence',
+          'Social features have bounded scope no threads, no follower counts, no moderation machinery needed',
+          'The brand promise: we wont demand your attention; well just be there when you need us'
+        ],
+        recommendation: 'Spotify should keep social ambient. The real value is music as a conversation starter that lives off-platform.'
+      },
+      {
+        title: 'Whats Wrong With Dating Apps',
+        tagline: 'The structural contradiction between successful relationships and business models.',
+        problem: 'If a dating app reliably produced committed relationships, its best users would churn. MAU would decline. Engagement would fall. This is baked into the business model.',
+        analysis: [
+          'Match Group earns revenue from subscriptions and in-app purchases users stay subscribed longer when they havent found someone',
+          'The Super Like mechanic exploits emotional arousal and time pressure to drive purchases',
+          'Variable reward schedules in swiping are neurologically identical to casino slot mechanics'
+        ],
+        insights: [
+          'The app that fixes dating would look like a calendar or event app, not a swipe platform',
+          'It would optimise for repeated in-person encounters and capped daily swipes',
+          'Dating apps measure physical first impression, supply-demand ratio, and willingness to pay not compatibility'
+        ],
+        recommendation: 'Products should optimise for relationship formation rate, not engagement. That means designing flows that get users off the app.'
+      },
+      {
+        title: 'Why WhatsApp Payments Isnt Winning Faster',
+        tagline: "500M users but negligible UPI market share. What the gap reveals about payments as a habit.",
+        problem: "WhatsApp has 500M Indian users but negligible UPI transaction share. PhonePe processes ~48% of all UPI volume.",
+        analysis: [
+          "WhatsApp users are in messaging context, not payment intent. These are different cognitive modes.",
+          "PhonePe earned trust by being first during India's post-demonetisation moment the ritual of shared friction built loyalty",
+          "Meta's global reputation on data privacy is a structural liability with Indian regulators"
+        ],
+        insights: [
+          'Payments is a habit, not a feature. Habits need a trigger, routine, and reward.',
+          "PhonePe attached to an existing trigger (merchant's QR code) and made the routine frictionless",
+          'WhatsApp arrived late, launched in phased regulatory rollout, and never performed the trust ritual'
+        ],
+        recommendation: 'WhatsApp would need to build deep local merchant relationships and regulatory trust that Meta structurally prevents.'
+      },
+      {
+        title: 'Models vs Agents vs Coding Assistants',
+        tagline: 'The boundary is not about capability. Its about autonomy and time horizon.',
+        problem: 'Most people using AI tools lack a clear vocabulary for what they are actually doing. The line between assistant and agent is blurry.',
+        analysis: [
+          'Assistant: suggests next lines within your editor. Agent: given a goal, acts autonomously reads repo, writes code, runs tests, opens PR.',
+          'Too much autonomy too early = silent error propagation. Too little = expensive autocomplete.',
+          'MCP (Model Context Protocol) standardised tool integration, enabling composable AI workflows across siloed systems'
+        ],
+        insights: [
+          'Agents work best when tasks have clear success criteria, environment provides honest feedback, and mistakes are cheap to reverse',
+          'Done for a human includes unstated criteria. An agent optimises for what it can measure.',
+          'The new role is AI workflow architect: decomposing goals into agent-executable tasks and designing review loops'
+        ],
+        recommendation: 'Calibrate autonomy based on task definition, feedback quality, and mistake recovery cost. The developer shifts from producer to specifier and reviewer.'
+      },
+      {
+        title: 'How Data Labeling Became a Billion-Dollar Industry',
+        tagline: "The invisible workforce behind every smart AI product.",
+        problem: "In Kenya, India, Venezuela, workers label data for less than $2/hour. Their invisibility is a feature of how AI is sold.",
+        analysis: [
+          "Scale AI started as a labeling API for self-driving cars. By 2026, it held a $500M Pentagon contract for AI on classified networks.",
+          'The company that controls data readiness infrastructure concentrates power more than the company that builds the model.',
+          'When models can label their own training data, the human-labeling-at-scale model loses its value proposition'
+        ],
+        insights: [
+          'Surviving labeling companies will own domain-specific, irreplaceable ground truth medical, legal, industrial',
+          'Venezuela does a disproportionate share of global labeling due to economic collapse, creating a geopolitical fragility',
+          "Bias gets encoded structurally through a chain of delegation where no one with authority questions the frame"
+        ],
+        recommendation: 'The commodity middle of offshore labeling compresses toward zero. High-trust, high-expertise vertical annotation is the moat.'
+      },
+      {
+        title: 'Why UPI Won and Wallets Lost',
+        tagline: "One design decision ended an entire financial product category.",
+        problem: 'Paytm had more users, more brand recall, and more capital. It lost because UPI made wallets structurally unnecessary.',
+        analysis: [
+          "Pre-loading money creates two frictions: the act of loading and the anxiety of balance management",
+          "UPI treated your bank account as the wallet. No top-up. No separate balance. Negative friction compared to wallets.",
+          'PhonePe (Walmart) and Google Pay (Alphabet) control 83% of UPI volume on Indian public infrastructure'
+        ],
+        insights: [
+          "Zero MDR was a policy choice, not a feature. The government decided it, banks paid for it, merchants and consumers won.",
+          'NPCI built the OS (UPI rails). PhonePe and Google shipped the App Store (interface layer).',
+          'The 30% market cap rule exists but has been repeatedly extended without enforcement'
+        ],
+        recommendation: 'The interface layer controls discovery, defaults, and financial product bundling. Sovereignty questions remain unresolved.'
+      },
+      {
+        title: 'How PhonePe Makes Money',
+        tagline: 'Payments is the loss leader. Financial services is the business.',
+        problem: 'PhonePe\'s payments product makes close to zero margin per transaction.',
+        analysis: [
+          'PhonePe is a financial services distributor that acquired 500M users through a free payments utility',
+          'Crossed Rs 5,000 crore revenue in FY24. Insurance premium volume growing ~100% YoY.',
+          'SmartSpeaker creates subscription revenue and physical POS presence in kirana stores',
+          'Payments builds the user base; insurance, mutual funds, loans generate high-margin revenue'
+        ],
+        insights: [
+          'The gap between payments app with many verticals and super app is user behaviour users dont start their day in PhonePe',
+          'Walmart ownership creates regulatory sensitivity and limits what PhonePe can do with data',
+          'If NPCI introduces MDR, the SmartSpeaker becomes more defensible not less'
+        ],
+        recommendation: 'PhonePe is closing the super app gap. Lending may be the feature that tips the balance from utility to financial relationship.'
+      },
+      {
+        title: 'Instagram Became Snapchat',
+        tagline: 'What happens when a platform cant buy its competitor and decides to replicate instead.',
+        problem: 'Facebook offered $3B for Snapchat in 2013. Evan Spiegel said no. Facebook spent the next 3 years shipping everything Snap had.',
+        analysis: [
+          "Kevin Systrom admitted Instagram copied Stories without shame. Execution and distribution are the moat, not the idea.",
+          'Instagram Stories won because it shipped to an existing social graph of 1B people',
+          'Snapchat had one thing Instagram couldnt copy: the native audience and cultural identity of unpolished, ephemeral communication'
+        ],
+        insights: [
+          'Large platforms have a two-stage playbook for existential competition: acquire first, if that fails, replicate',
+          "Platform identity matters more to builders and creators than to users. Users follow their social graph.",
+          "Instagram's strategy: find where attention lives, ship a version, attach to existing graph, let network effects do the rest"
+        ],
+        recommendation: "Snapchat survived but didnt win the attention market it helped invent. Instagram's strategy has no creative coherence and exceptional commercial logic."
+      }
+    ];
+
+    const findings = [
+      {
+        title: 'The Evolution of the Minimum Buyable Product',
+        blocks: [
+          {
+            heading: 'Key Observations',
+            content: [
+              'The MVP era was about validated learning: prove a real problem exists, that people will use something to solve it.',
+              'The MVVP (Minimum Viral Viable Product) emerged as markets saturated and acquisition costs rose. Does using this product create a reason to share it?',
+              'The MBP (Minimum Buyable Product) asks the hardest question: will users pay for this with real money, right now, without a trial?',
+              'Calendly, Figma, and WhatsApp are MVVP structures the product is its own distribution mechanism.'
+            ]
+          },
+          {
+            heading: 'Insights',
+            content: [
+              "Viral coefficient compounds violently above 1.0. A product with 1.1 doesnt just grow; it accelerates.",
+              "The three lenses are sequential: does it solve a real problem (MVP)? Does it create network gravity (MVVP)? Does it earn money (MBP)?",
+              'Products that clear one or two but not three are common: 50K users and zero revenue, viral growth and 1% conversion.'
+            ]
+          },
+          {
+            heading: 'Takeaways',
+            content: [
+              'Validated learning now includes learning whether your product can grow without paid acquisition and whether anyone will pay for it.',
+              'This is not a rejection of Lean Startup. Its an acknowledgment that the market changed.',
+              'Clear all three bars before raising Series A.'
+            ]
+          }
+        ]
+      },
+      {
+        title: 'How Disruption Bubbles Burst',
+        blocks: [
+          {
+            heading: 'Key Observations',
+            content: [
+              'Every bubble starts with something real. Dot-com began with the internet. AI began with genuine LLM capability jumps.',
+              'Bubbles inflate when the pace of extrapolation outstrips the pace reality can actually be built.',
+              'This is the innovation-adaptation ratio: the gap between new capabilities and the systems that can absorb them.'
+            ],
+            bullets: [
+              'Healthy ratio: innovation is absorbed as it arrives. The PC era of the 1980s-90s.',
+              'Broken ratio: capital concentrates around extrapolations. Companies have cost structures requiring the future to arrive on a venture timeline.'
+            ]
+          },
+          {
+            heading: 'Insights',
+            content: [
+              'Most enterprises are still in the experimenting with AI phase running pilots, navigating procurement, security, and governance.',
+              'The burst comes from a catalyst that forces the market to price the adaptation lag honestly. In 1999, it was rising interest rates.',
+              'What survives: companies that found a specific use case where adaptation lag was short and business model was tight enough for real revenue.'
+            ]
+          },
+          {
+            heading: 'Takeaways',
+            content: [
+              'Most of what gets built during an innovation wave doesnt survive the adaptation wave not because it was bad, but because it was early.',
+              'The winners are often not the inventors they shipped when the adaptation curve finally caught up.',
+              'Being right about the future is necessary. Being right on time is the actual business.'
+            ]
+          }
+        ]
+      },
+      {
+        title: 'What a Professional Can Do That AI Cannot',
+        blocks: [
+          {
+            heading: 'Key Observations',
+            content: [
+              'AI is classified as property, not a person, under law in the US, EU, and India. It cannot own its outputs, enter contracts, or be sued.',
+              'Courts have ruled that a lawyer who submits AI-generated fictitious citations cannot use the AI did it as a defence.',
+              'AI can execute tasks within a funnel but cannot own a funnel end-to-end.',
+              'Governing bodies have moved toward recognising AI-generated artifacts in narrow senses but never AI as a legal entity.'
+            ]
+          },
+          {
+            heading: 'Insights',
+            content: [
+              'Accountability is the structural gap: AI cannot lose a license, face reputational damage, or bear consequences.',
+              'Owning a funnel requires a named human who had the authority to make different choices and chose not to.',
+              'The distinction between artifact (bounded output) and entity (continuous accountable actor) is the key design question.'
+            ]
+          },
+          {
+            heading: 'Takeaways',
+            content: [
+              'The professional is not competing on task throughput that race is lost.',
+              'The professional competes on the capacity to be responsible for the outcome in a way that creates trust, enables contracts, and satisfies regulators.',
+              'A junior analyst who can produce at AI speed and then stand in front of a client and own the work is more valuable than either AI or a speed-competitor alone.'
+            ]
+          }
+        ]
+      }
+    ];
+
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = projects.map((p, i) => `
+        <div class="project-card" onclick="openProject(${i})">
+          <div class="project-card-header">
+            <span class="project-domain">${p.domain}</span>
+          </div>
+          <h3 class="project-card-title">${p.title}</h3>
+          <p class="project-card-tagline">${p.tagline}</p>
+          <div class="project-card-meta">${p.techs.slice(0,4).map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
         </div>
-      </div>
-      <div class="tech-group">
-        <div class="tech-group-label">Tools</div>
-        <div class="tech-items">
-          <span class="tech-item">Figma</span>
-          <span class="tech-item">Microsoft Power BI</span>
-          <span class="tech-item">Firebase</span>
-          <span class="tech-item">Git / GitHub</span>
+      `).join('');
+    }
+
+    function openProject(index) {
+      const p = projects[index];
+      const body = document.getElementById('modalBody');
+      const links = [];
+      if (p.links.github) links.push(`<a href="${p.links.github}" target="_blank" rel="noopener" class="modal-link">GitHub</a>`);
+      if (p.links.demo) links.push(`<a href="${p.links.demo}" target="_blank" rel="noopener" class="modal-link">Demo</a>`);
+      if (p.links.screenshot) links.push(`<span class="placeholder">${p.links.screenshot}</span>`);
+
+      body.innerHTML = `
+        <div class="modal-domain">${p.domain}</div>
+        <h2 class="modal-title">${p.title}</h2>
+        <p class="modal-tagline">${p.tagline}</p>
+        <div class="modal-section">
+          <h3>Problem</h3>
+          <p>${p.problem}</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CONCEPTS ─── -->
-<section id="concepts" class="section-wrap">
-  <div class="section-header">
-    <div class="s-num">02 — Concepts</div>
-    <div class="s-title-wrap">
-      <div class="s-title">Ideas I keep coming back to</div>
-      <div class="s-note">Not shipped — documented thinking</div>
-    </div>
-  </div>
-  <div class="concepts-intro">
-    These are product gaps I have identified and thought through to the point of knowing what is missing and why it persists. Not mockups, not promises — structured thinking about problems worth solving.
-  </div>
-  <div class="concepts-grid">
-    <div class="concept-card">
-      <div class="concept-index">01</div>
-      <div class="concept-niche">EdTech · Browser</div>
-      <div class="concept-title">A reading layer that closes the passive vocabulary gap</div>
-      <p class="concept-desc">Tracks which words you look up or encounter repeatedly without using in your own writing. Surfaces contextual definitions on hover. Resurfaces terms across different texts over time — moving words from recognised to reachable as a byproduct of normal reading.</p>
-      <div class="concept-gap"><strong>The gap</strong>Kindle's vocabulary builder is disconnected from the browser. No tool closes the passive-to-active gap as a byproduct of reading rather than a separate task.</div>
-    </div>
-    <div class="concept-card">
-      <div class="concept-index">02</div>
-      <div class="concept-niche">Fintech · Productivity</div>
-      <div class="concept-title">Subscription manager that connects cost to actual use</div>
-      <p class="concept-desc">Maps all active subscriptions to the accounts they are linked to, tracks renewal dates, flags unused services, and surfaces true monthly cost. Banks show transactions, not patterns.</p>
-      <div class="concept-gap"><strong>The gap</strong>Most people do not know what they pay monthly. No product connects subscriptions to actual usage data in one place.</div>
-    </div>
-    <div class="concept-card">
-      <div class="concept-index">03</div>
-      <div class="concept-niche">EdTech · AI</div>
-      <div class="concept-title">Real-time lesson generator for the gap you are stuck on right now</div>
-      <p class="concept-desc">Takes whatever topic a student is blocked on mid-session and generates a micro-lesson paced to their current understanding — not a fixed curriculum, not a pre-recorded video.</p>
-      <div class="concept-gap"><strong>The gap</strong>Existing EdTech teaches to the syllabus. None adapt to the specific gap a student hits mid-session.</div>
-    </div>
-    <div class="concept-card">
-      <div class="concept-index">04</div>
-      <div class="concept-niche">Media · AI</div>
-      <div class="concept-title">News reader that shows how a story got here</div>
-      <p class="concept-desc">Maps stories as connected threads rather than a feed — showing how a story evolved, which sources framed it differently, and what context is missing from the headline you clicked.</p>
-      <div class="concept-gap"><strong>The gap</strong>News feeds optimise for recency, not understanding. No product shows how a story connects to its own history.</div>
-    </div>
-    <div class="concept-card">
-      <div class="concept-index">05</div>
-      <div class="concept-niche">AI · Productivity</div>
-      <div class="concept-title">Digital twin trained on what you actually write and say</div>
-      <p class="concept-desc">A personal AI model trained on your writing patterns, vocabulary, note-taking habits, and communication style — producing outputs that sound like you, not an AI approximation of you.</p>
-      <div class="concept-gap"><strong>The gap</strong>Current AI assistants produce generic output regardless of who is prompting. A twin trained on your actual language would close that gap.</div>
-    </div>
-    <div class="concept-card">
-      <div class="concept-index">06</div>
-      <div class="concept-niche">Productivity · Chrome</div>
-      <div class="concept-title">Account-to-service tracker for people with too many Google accounts</div>
-      <p class="concept-desc">A Chrome extension that tracks which Google account is linked to which service, flags account conflicts before login friction hits, and gives a clear map of your multi-account digital life.</p>
-      <div class="concept-gap"><strong>The gap</strong>Managing multiple Google accounts across dozens of services is a daily frustration with no dedicated tooling.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── TESTIMONIALS ─── -->
-<section class="section-wrap">
-  <div class="section-header">
-    <div class="s-num">02b — Proof</div>
-    <div class="s-title-wrap">
-      <div class="s-title">What others say</div>
-      <div class="s-note">LinkedIn recommendations</div>
-    </div>
-  </div>
-  <div class="testimonials-wrap">
-    <div class="testimonial-card placeholder">
-      <div class="placeholder-label">Testimonial pending</div>
-      <div class="placeholder-note">Add a LinkedIn recommendation from your GM Infotech internship</div>
-    </div>
-    <div class="testimonial-card placeholder">
-      <div class="placeholder-label">Testimonial pending</div>
-      <div class="placeholder-note">Add a recommendation from Placements' Cell coordinator or Student Council</div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── EXPERIENCE ─── -->
-<section id="experience" class="section-wrap">
-  <div class="section-header">
-    <div class="s-num">03 — Experience</div>
-    <div class="s-title-wrap">
-      <div class="s-title">Where the work happened</div>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <div class="exp-period"><strong>Nov 2025 – Present</strong>Hybrid · CHRIST University</div>
-    </div>
-    <div class="exp-body">
-      <div class="exp-title">Newsletter Content Curator</div>
-      <div class="exp-org">Placements' Cell</div>
-      <ul class="exp-bullets">
-        <li>Ran the full newsletter pipeline across 10+ sources and 5+ contributors, reaching 40,000+ students bi-monthly</li>
-        <li>Consolidated 7 fragmented placement update types into one structured communication, cutting repetitive queries during peak placement weeks</li>
-        <li>Delivered the pilot edition through a university-declared Christmas holiday week, end-to-end without delay</li>
-      </ul>
-      <div class="exp-tags">
-        <span class="exp-tag">Communication Systems</span>
-        <span class="exp-tag">Editorial Workflow</span>
-        <span class="exp-tag">Stakeholder Coordination</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <div class="exp-period"><strong>Oct – Nov 2025</strong>On-site · CHRIST University</div>
-    </div>
-    <div class="exp-body">
-      <div class="exp-title">Department Representative</div>
-      <div class="exp-org">Placements' Cell</div>
-      <ul class="exp-bullets">
-        <li>First point of contact for placement queries across 140+ students — triaged, categorised, routed each concern to the right coordinator</li>
-        <li>Kept 3 coordinators in sync throughout a full placement cycle, preventing information gaps during high-pressure windows</li>
-      </ul>
-      <div class="exp-tags">
-        <span class="exp-tag">Escalation Management</span>
-        <span class="exp-tag">Stakeholder Management</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <div class="exp-period"><strong>Nov 2025</strong>On-site · CHRIST University</div>
-    </div>
-    <div class="exp-body">
-      <div class="exp-title">Master of Ceremonies + Operations</div>
-      <div class="exp-org">HR Vista 2.0 Conclave</div>
-      <ul class="exp-bullets">
-        <li>Served as MC for a two-day HR conclave bringing together professionals from top-tier companies, managing programme flow and live timing</li>
-        <li>Simultaneously contributed to logistics, hospitality, and operations throughout the event</li>
-      </ul>
-      <div class="exp-tags">
-        <span class="exp-tag">Event Operations</span>
-        <span class="exp-tag">Logistics</span>
-        <span class="exp-tag">Stakeholder Coordination</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <div class="exp-period"><strong>Jul – Sep 2025</strong>Mumbai · Internship</div>
-    </div>
-    <div class="exp-body">
-      <div class="exp-title">UI/UX Designer</div>
-      <div class="exp-org">GM Infotech</div>
-      <ul class="exp-bullets">
-        <li>Redesigned 7 pages and 14 user flows for BeingHR, building 25 reusable components across 3 device breakpoints</li>
-        <li>Deployed Figma designs to production in HTML/CSS, finding and fixing 4 breakpoint edge cases invisible in Figma</li>
-        <li>Documented design decisions and version history for future contributors</li>
-      </ul>
-      <div class="exp-tags">
-        <span class="exp-tag">Figma</span><span class="exp-tag">HTML/CSS</span><span class="exp-tag">UX Documentation</span><span class="exp-tag">Responsive Design</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <div class="exp-period"><strong>Aug 2024 – Aug 2025</strong>On-site · Full-time</div>
-    </div>
-    <div class="exp-body">
-      <div class="exp-title">Department Representative</div>
-      <div class="exp-org">Student Council · CHRIST University</div>
-      <ul class="exp-bullets">
-        <li>Triaged 70+ student issues by urgency and feasibility, escalating serious cases and resolving smaller ones directly</li>
-        <li>Maintained a website serving 5,000+ users with monthly content updates</li>
-        <li>Coordinated logistics for 1,500+ students across 100+ trips at 3 operational checkpoints</li>
-      </ul>
-      <div class="exp-tags">
-        <span class="exp-tag">Operations</span><span class="exp-tag">Logistics</span><span class="exp-tag">Issue Triage</span>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<!-- ─── WRITING ─── -->
-<section id="writing" class="section-wrap">
-  <div class="section-header">
-    <div class="s-num">04 — Writing</div>
-    <div class="s-title-wrap">
-      <div class="s-title">Thinking out loud</div>
-      <div class="s-note">1 piece published · more coming</div>
-    </div>
-  </div>
-  <div class="writing-feature">
-    <div class="writing-left">
-      <div class="article-label">Medium · EdTech · Product Critique · 2025</div>
-      <div class="article-title">E-books were supposed to fix reading. They just moved the problem.</div>
-      <div class="article-sub">First published piece — tags: Product Design, UX, Reading, EdTech, PM</div>
-      <div class="article-pull">
-        "The friction that makes people drift from e-books toward AI summaries has less to do with ideas being too hard and more to do with hitting an unknown word mid-sentence and facing two bad options: skip it and lose precision, or leave the page and lose the flow."
-      </div>
-    </div>
-    <div class="writing-right">
-      <p class="writing-about">
-        This piece argues that passive vocabulary is a product problem, not a literacy one. It describes a reading layer that does not yet exist — one that tracks vocabulary through behaviour, surfaces contextual definitions without breaking flow, and closes the passive-to-active gap as a byproduct of reading rather than a separate habit to build.
-      </p>
-      <div class="coined">
-        <div class="coined-label">Term coined in this piece</div>
-        <div class="coined-term">Lexical debt</div>
-        <div class="coined-def">Vocabulary gaps that compound quietly over time through passive reading — recognised often enough to skip, understood rarely enough to use correctly.</div>
-      </div>
-      <div class="writing-tags">
-        <span class="wtag">Product Design</span>
-        <span class="wtag">UX</span>
-        <span class="wtag">Reading</span>
-        <span class="wtag">EdTech</span>
-        <span class="wtag">Product Management</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── ABOUT ─── -->
-<section id="about" class="section-wrap">
-  <div class="section-header">
-    <div class="s-num">05 — About</div>
-    <div class="s-title-wrap">
-      <div class="s-title">In brief</div>
-    </div>
-  </div>
-  <div class="about-grid">
-    <div class="about-left">
-      <p class="about-text">
-        Third-year BCA student at CHRIST University, Pune-Lavasa. Looking for internships in product management, product operations, business analysis, or a founder's office where <strong>figuring out what is broken and fixing it is the actual job.</strong>
-      </p>
-      <p class="about-text">
-        I write product critique publicly because I think the habit of noticing gaps and articulating them clearly is most of what product work is. The Medium article above is the first of several.
-      </p>
-    </div>
-    <div class="about-right">
-      <div class="skill-group">
-        <div class="skill-group-label">Product & Strategy</div>
-        <div class="skill-tags">
-          <span class="stag">User Problem Framing</span>
-          <span class="stag">PRD Writing</span>
-          <span class="stag">Requirements Engineering</span>
-          <span class="stag">Roadmap Prioritisation</span>
+        <div class="modal-section">
+          <h3>Solution</h3>
+          <p>${p.solution}</p>
         </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Operations</div>
-        <div class="skill-tags">
-          <span class="stag">Stakeholder Management</span>
-          <span class="stag">Process Documentation</span>
-          <span class="stag">KPI Tracking</span>
-          <span class="stag">Cross-functional Coordination</span>
+        <div class="modal-section">
+          <h3>Outcome</h3>
+          <ul>${p.outcome.map(o => `<li>${o}</li>`).join('')}</ul>
         </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">UX & Design</div>
-        <div class="skill-tags">
-          <span class="stag">Figma</span>
-          <span class="stag">Flow Documentation</span>
-          <span class="stag">Prototyping</span>
-          <span class="stag">Component Systems</span>
+        <div class="modal-section">
+          <h3>Technologies</h3>
+          <div class="modal-techs">${p.techs.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+        ${links.length ? `<div class="modal-links">${links.join('')}</div>` : ''}
+      `;
+      document.getElementById('projectModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
 
-<!-- ─── CTA BANNER ─── -->
-<section class="cta-banner" id="contact">
-  <div>
-    <div class="cta-heading">Looking for a <span>Summer / Fall 2026</span> internship.</div>
-    <div class="cta-sub">PM · Product Ops · Business Analysis · Founder's Office · Open to remote and Pune / Bengaluru</div>
-  </div>
-  <div class="cta-actions">
-    <a href="mailto:himalis106@gmail.com" class="cta-btn-primary">Email me directly →</a>
-    <a href="https://linkedin.com/in/himalisuresh" target="_blank" class="cta-btn-ghost">Connect on LinkedIn ↗</a>
-  </div>
-</section>
+    function renderCaseStudies() {
+      const grid = document.getElementById('csGrid');
+      grid.innerHTML = caseStudies.map((cs, i) => `
+        <div class="cs-card" onclick="openCaseStudy(${i})">
+          <h2 class="cs-title">${cs.title}</h2>
+          <p class="cs-tagline">${cs.tagline}</p>
+        </div>
+      `).join('');
+    }
 
-<!-- ─── FOOTER ─── -->
-<footer>
-  <div class="footer-copy">Himali Suresh · 2025 · Built in HTML</div>
-  <div class="footer-links">
-    <a href="mailto:himalis106@gmail.com">Email</a>
-    <a href="https://linkedin.com/in/himalisuresh" target="_blank">LinkedIn</a>
-    <a href="https://github.com/codesbyhimali" target="_blank">GitHub</a>
-    <a href="#" target="_blank">Medium</a>
-  </div>
-</footer>
+    function openCaseStudy(index) {
+      const cs = caseStudies[index];
+      const body = document.getElementById('modalBody');
+      body.innerHTML = `
+        <h2 class="modal-title">${cs.title}</h2>
+        <p class="modal-tagline">${cs.tagline}</p>
+        <div class="modal-section">
+          <h3>Problem</h3>
+          <p>${cs.problem}</p>
+        </div>
+        <div class="modal-section">
+          <h3>Analysis</h3>
+          <ul>${cs.analysis.map(a => `<li>${a}</li>`).join('')}</ul>
+        </div>
+        <div class="modal-section">
+          <h3>Insights</h3>
+          <ul>${cs.insights.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+        <div class="modal-section">
+          <h3>Recommendation</h3>
+          <p>${cs.recommendation}</p>
+        </div>
+      `;
+      document.getElementById('projectModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
 
+    function renderFindings() {
+      const grid = document.getElementById('findingsGrid');
+      grid.innerHTML = findings.map(f => {
+        const blocks = f.blocks.map(b => {
+          let content = b.content.map(c => `<p>${c}</p>`).join('');
+          let bullets = b.bullets ? `<ul>${b.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
+          return `<div class="finding-block"><h3>${b.heading}</h3>${content}${bullets}</div>`;
+        }).join('');
+        return `<div class="finding-card"><h2>${f.title}</h2>${blocks}</div>`;
+      }).join('');
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('projectModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    function nav(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.dataset.page === pageId) link.classList.add('active');
+      });
+      document.getElementById('navLinks').classList.remove('open');
+      document.getElementById('menuBtn').classList.remove('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      closeModal();
+    }
+
+    document.getElementById('menuBtn').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    function setTheme(dark) {
+      document.documentElement.classList.toggle('dark', dark);
+      document.getElementById('themeToggle').textContent = dark ? '☀' : '☾';
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setTheme(true);
+    }
+    document.getElementById('themeToggle').addEventListener('click', function() {
+      setTheme(!document.documentElement.classList.contains('dark'));
+    });
+
+    renderProjects();
+    renderCaseStudies();
+    renderFindings();
+  </script>
 </body>
 </html>
