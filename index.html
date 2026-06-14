@@ -537,6 +537,37 @@
       .modal-content { padding: 20px 16px; }
       .modal-title { font-size: 22px; }
     }
+
+    @media (max-width: 400px) {
+      .hero { padding: 24px 0 32px; }
+      .hero-name { font-size: 30px; }
+      .hero-pfp { width: 68px; height: 68px; margin-bottom: 16px; }
+      .hero-headline { font-size: 14px; padding-left: 12px; }
+      .hero-about { font-size: 14px; }
+      .social-link { font-size: 12px; gap: 6px; }
+      .social-link svg { width: 14px; height: 14px; }
+      .container { padding: 0 12px; }
+      .modal-content { padding: 16px 12px; }
+      .modal-title { font-size: 19px; }
+      .project-card-title { font-size: 18px; }
+      .cs-title { font-size: 18px; }
+      .finding-card h2 { font-size: 18px; }
+    }
+
+    @media (hover: none) {
+      .project-card:hover, .cs-card:hover { padding-left: 0; }
+      .project-card::after, .cs-card::after { display: none; }
+      .project-card { cursor: default; }
+      .cs-card { cursor: default; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .container { padding: 0 32px; }
+      .header-inner { padding: 0 32px; }
+      .hero-name { font-size: clamp(52px, 7vw, 72px); }
+    }
+
+    .project-card, .cs-card, .finding-card, .modal-content { overflow-wrap: break-word; word-break: break-word; }
   </style>
 </head>
 <body>
@@ -584,6 +615,10 @@
           <a href="mailto:himalis106@gmail.com" class="social-link">
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             himalis106@gmail.com
+          </a>
+          <a class="social-link location-link">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            BANGALORE, INDIA
           </a>
         </div>
       </div>
