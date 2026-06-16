@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')</script>
+  <meta name="description" content="Himali Suresh — Product Builder, Business Analyst, Software Developer">
+  <title>Himali Suresh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Himali Suresh</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a class="nav-link active" href="index.html">About</a></li>
+          <li><a class="nav-link" href="case-studies.html">Case Studies</a></li>
+          <li><a class="nav-link" href="findings.html">Findings</a></li>
+          <li><a class="nav-link" href="projects.html">Projects</a></li>
+          <li><a class="nav-link" href="xp.html">XP</a></li>
+          <li><a class="nav-link recruit-link" href="https://drive.google.com/file/d/16wgxD18yhUptIYQkDp76Jr0l8iT6JJI2/view?usp=sharing" target="_blank" rel="noopener">Recruit</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page active">
+    <section class="hero">
+      <div class="container">
+        <img src="pfp.jpeg" alt="Himali Suresh" class="hero-pfp">
+        <h1 class="hero-name">Himali Suresh</h1>
+        <p class="hero-headline">Product Builder and Analyst | AI, FinTech &amp; Consumer Tech Products | 7x Hackathon &amp; Ideathon Finalist</p>
+        <div class="hero-about">
+          <p>I gravitate toward problems hiding in plain sight. The kind people work around every day instead of solving.</p>
+          <p>I'm a second-year BCA student at CHRIST University building products across AI, SaaS, operations, and campus infrastructure. My work spans stakeholder interviews, product strategy, system design, and full-stack development. Most projects begin with a real operational problem and end with something people can actually use.</p>
+          <p>I've worked on AI adoption initiatives, owned product development across multiple sprint cycles, built production-ready applications, and competed in seven hackathons across India.</p>
+          <p>Always building. Occasionally writing.</p>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/1himali" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:himalis106@gmail.com" class="social-link">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            himalis106@gmail.com
+          </a>
+          <a class="social-link location-link">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            BANGALORE, INDIA
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:himalis106@gmail.com" class="footer-link">Email</a>
+        <a href="https://github.com/1himali" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      </div>
+      <div class="footer-copy">Portfolio 2026</div>
+    </div>
+  </footer>
+
+  <script src="common.js"></script>
+</body>
+</html>

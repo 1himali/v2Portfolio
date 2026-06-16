@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')</script>
+  <meta name="description" content="Retail AI Platform — by Himali Suresh">
+  <title>Retail AI Platform — Himali Suresh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">Himali Suresh</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a class="nav-link" href="../index.html">About</a></li>
+          <li><a class="nav-link" href="../case-studies.html">Case Studies</a></li>
+          <li><a class="nav-link" href="../findings.html">Findings</a></li>
+          <li><a class="nav-link active" href="../projects.html">Projects</a></li>
+          <li><a class="nav-link" href="../xp.html">XP</a></li>
+          <li><a class="nav-link recruit-link" href="https://drive.google.com/file/d/16wgxD18yhUptIYQkDp76Jr0l8iT6JJI2/view?usp=sharing" target="_blank" rel="noopener">Recruit</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page active">
+    <div class="container">
+      <div class="project-detail">
+        <a href="../projects.html" class="back-link">&larr; Back to Projects</a>
+        <div class="modal-domain">AI / Retail</div>
+        <h1 class="modal-title">Retail AI Platform</h1>
+        <p class="modal-tagline">Real-time analytics platform for retail environments using computer vision, LLMs, and AI-powered multi-agent insights.</p>
+        <div class="modal-section">
+          <h3>Problem</h3>
+          <p>Retail stores lack real-time visibility into foot traffic patterns, congestion hotspots, and operational inefficiencies. Manual monitoring is labour-intensive and provides no actionable analytics or predictive insights.</p>
+        </div>
+        <div class="modal-section">
+          <h3>Solution</h3>
+          <p>A comprehensive platform combining YOLOv8 computer vision for real-time people detection, a multi-agent LLM system for intelligent alerting, and an Angular dashboard with live metrics, historical analytics, trend prediction, and staffing recommendations.</p>
+        </div>
+        <div class="modal-section">
+          <h3>Outcome</h3>
+          <ul>
+            <li>Real-time people counting and congestion detection via YOLOv8 CNN</li>
+            <li>Multi-agent LLM system for coordinated monitoring and intelligent alert generation</li>
+            <li>Live Angular dashboard with 3-second refresh intervals and historical trend analysis</li>
+            <li>Statistical analytics for peak hour detection and staffing optimisation</li>
+            <li>RAG-based knowledge system for contextual alert generation</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Technologies</h3>
+          <div class="modal-techs">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Angular</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">YOLOv8</span>
+            <span class="tech-tag">OpenCV</span>
+            <span class="tech-tag">Ollama LLM</span>
+            <span class="tech-tag">Multi-Agent</span>
+          </div>
+        </div>
+        <div class="modal-links">
+          <a href="https://github.com/1himali/smart-retail-ai-system" target="_blank" rel="noopener" class="modal-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:himalis106@gmail.com" class="footer-link">Email</a>
+        <a href="https://github.com/1himali" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      </div>
+      <div class="footer-copy">Portfolio 2026</div>
+    </div>
+  </footer>
+
+  <script src="../common.js"></script>
+</body>
+</html>

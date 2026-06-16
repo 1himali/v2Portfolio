@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/projects/:slug", "destination": "/projects/:slug.html" },
+    { "source": "/xp/:slug", "destination": "/xp/:slug.html" }
+  ]
+}

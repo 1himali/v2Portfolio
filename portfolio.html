@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')</script>
+  <meta name="description" content="Himali Suresh — Product Builder, Business Analyst, Software Developer">
+  <title>Himali Suresh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Himali Suresh</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a class="nav-link active" href="index.html">About</a></li>
+          <li><a class="nav-link" href="case-studies.html">Case Studies</a></li>
+          <li><a class="nav-link" href="findings.html">Findings</a></li>
+          <li><a class="nav-link" href="projects.html">Projects</a></li>
+          <li><a class="nav-link" href="xp.html">XP</a></li>
+          <li><a class="nav-link recruit-link" href="https://drive.google.com/file/d/16wgxD18yhUptIYQkDp76Jr0l8iT6JJI2/view?usp=sharing" target="_blank" rel="noopener">Recruit</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page active" id="page-home">
+    <section class="hero">
+      <div class="container">
+        <img src="pfp.jpeg" alt="Himali Suresh" class="hero-pfp">
+        <h1 class="hero-name">Himali Suresh</h1>
+        <p class="hero-headline">Product Builder and Analyst | AI, FinTech &amp; Consumer Tech Products | 7x Hackathon &amp; Ideathon Finalist</p>
+        <div class="hero-about">
+          <p>I gravitate toward problems hiding in plain sight. The kind people work around every day instead of solving.</p>
+          <p>I'm a second-year BCA student at CHRIST University building products across AI, SaaS, operations, and campus infrastructure. My work spans stakeholder interviews, product strategy, system design, and full-stack development. Most projects begin with a real operational problem and end with something people can actually use.</p>
+          <p>I've worked on AI adoption initiatives, owned product development across multiple sprint cycles, built production-ready applications, and competed in seven hackathons across India.</p>
+          <p>Always building. Occasionally writing.</p>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/1himali" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:himalis106@gmail.com" class="social-link">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            himalis106@gmail.com
+          </a>
+          <a class="social-link location-link">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            BANGALORE, INDIA
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <main class="page" id="page-projects">
+    <div class="container">
+      <div class="page-header">
+        <h1>Projects</h1>
+        <p>Shipped systems across hospitality, campus administration, fintech, community, and automation.</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </main>
+
+  <main class="page" id="page-case-studies">
+    <div class="container">
+      <div class="page-header">
+        <h1>Case Studies</h1>
+        <p>Product thinking applied to real-world problems across fintech, social, payments, and AI.</p>
+      </div>
+      <div class="cs-grid" id="csGrid"></div>
+    </div>
+  </main>
+
+  <main class="page" id="page-findings">
+    <div class="container">
+      <div class="page-header">
+        <h1>Findings</h1>
+        <p>Cross-domain observations on product strategy, market dynamics, and professional value.</p>
+      </div>
+      <div class="findings-grid" id="findingsGrid"></div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-content" id="modalContent">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:himalis106@gmail.com" class="footer-link">Email</a>
+        <a href="https://github.com/1himali" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      </div>
+      <div class="footer-copy">Portfolio 2026</div>
+    </div>
+  </footer>
+
+  <script src="common.js"></script>
+  <script>
+    const projects = [
+      {
+        title: 'RAISEit',
+        tagline: 'A real-time auction engine with structured fundraising workflows, designed for transparent competitive bidding at scale.',
+        domain: 'Events / Fundraising',
+        techs: ['Next.js', 'React', 'Tailwind CSS', 'Node.js', 'REST APIs', 'WebSockets', 'MongoDB', 'JWT'],
+        problem: 'Auction-based fundraising and team-selection events are typically run manually on spreadsheets or whiteboards. This creates no real-time visibility for participants, high administrative overhead during live rounds, no budget enforcement, no permanent bid record, and no scalable format for multi-team simultaneous events.',
+        solution: 'A hosted web platform where admins configure auctions end-to-end (budgets, team limits, player pools, round timers); teams join via unique invitation codes; live WebSocket connections push bid updates to every participant instantly; server-side timers auto-complete rounds; MongoDB persists complete bid history and budget deductions transparently.',
+        outcome: [
+          'Eliminated manual spreadsheet management for multi-team auction events',
+          'Server-enforced budget constraints removed human error and dispute possibilities in bidding',
+          'Auto-complete logic enabled unattended auction closure, reducing admin presence requirement',
+          'Transparent bid history visible to all participants increased trust in auction outcomes',
+          'Platform accessible as a live deployed website, enabling use by external organisers'
+        ],
+        links: { github: 'https://github.com/1himali/raiseit', demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'Property Management System (PMS)',
+        tagline: 'A full-stack Property Management System built from scratch — covering rooms, dining, billing, inventory, payroll, and analytics for independent hospitality businesses.',
+        domain: 'Hospitality / SaaS',
+        techs: ['Java 21', 'Spring Boot 3.5', 'PostgreSQL', 'Flyway', 'JWT', 'Swagger', 'JUnit 5', 'Testcontainers'],
+        problem: 'Independent hospitality businesses — B&Bs, hostels, small hotels — operate across fragmented tools: manual registers for rooms, separate POS for restaurant, spreadsheets for inventory and payroll, and no unified analytics view. Enterprise PMS solutions are priced for large hotels.',
+        solution: 'A unified Spring Boot application serving a REST API documented via Swagger/OpenAPI, a static browser UI with role-gated navigation, PostgreSQL with 15 Flyway migrations, JWT with four role tiers, and integrated modules: rooms, restaurant, billing, inventory, payroll, analytics, activity log, and AI assistant.',
+        outcome: [
+          '85 automated tests across 12 test classes validate system correctness',
+          '15 Flyway database migrations provide a complete, reproducible schema history',
+          'Four-role access control enforced server-side across every API endpoint',
+          'Swagger UI generates live API documentation enabling third-party developer onboarding',
+          'Mock mode allows safe testing of third-party integrations without live API calls',
+          'A B&B with 10-15 rooms could replace 3-4 separate tools with this single system'
+        ],
+        links: { github: 'https://github.com/1himali/hospitality-operations', demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'My Hood',
+        tagline: 'A neighbourhood-first platform connecting residents through local discovery, community updates, and shared civic participation.',
+        domain: 'Community',
+        techs: ['HTML', 'CSS', 'JavaScript'],
+        problem: 'Residential communities lack a structured digital space for discovering reliable local services, sharing hyperlocal updates, coordinating civic issues, and building neighbourhood trust. WhatsApp groups are chaotic. No Indian platform owns neighbourhood-scoped social interaction with verification.',
+        solution: 'A community platform scoped to a defined geographic boundary providing a curated local service directory, neighbourhood-scoped update feed, community event discovery, and resident-to-resident interaction with shared local context.',
+        outcome: [
+          'Clear product vision for underserved urban Indian market segment',
+          'Information architecture separates discovery, updates, and community interaction',
+          'B2B2C model: sold to RWAs and housing societies, used by residents'
+        ],
+        links: { github: null, demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'Vibranium',
+        tagline: 'AI-powered SaaS product intelligence workspace with market analysis, competitor discovery, and strategic insights.',
+        domain: 'SaaS / AI',
+        techs: ['React 18', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Recharts', 'Firebase Auth', 'Firestore', 'FastAPI'],
+        problem: 'Product teams lack a unified intelligence workspace to analyse market positioning, track competitor landscapes, and derive strategic insights for their SaaS products. Existing tools are fragmented and disconnected.',
+        solution: 'An authenticated multi-page SaaS intelligence dashboard with product profile setup, market intelligence analysis, product health KPIs, competitor discovery, strategic insights, and an AI assistant — all powered by Firebase auth/data layer and a FastAPI backend.',
+        outcome: [
+          'Multi-page authenticated dashboard with 7-step product setup wizard',
+          'Real-time market analysis with sentiment scoring and feature comparison',
+          'Product health monitoring with DAU/MAU, revenue, and feature usage analytics',
+          'Competitor discovery with positioning scatter plots and market gap detection',
+          'AI assistant with chat interface for strategic recommendations'
+        ],
+        links: { github: 'https://github.com/1himali/Vibranium', demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'Email Automation System (RPA)',
+        tagline: 'A UiPath-based RPA solution that eliminates repetitive email workflows for university administrative staff managing 22 student clubs.',
+        domain: 'Workflow Automation',
+        techs: ['UiPath', 'Google Sheets', 'Gmail'],
+        problem: 'Manual weekly email workflow for 22 clubs: Saturday reminders, report follow-ups, signature correction requests, and account-switching between two email IDs. No centralised tracking across 65+ events per semester.',
+        solution: 'UiPath RPA bot connected to a central Google Sheets tracking spreadsheet. Status-based trigger logic: no event activity → send reminder; report awaited → send follow-up; signatures incomplete → send correction. Account-routing eliminates wrong-account sends.',
+        outcome: [
+          'Stakeholder interview conducted and documented (Q&A Format, 14-Feb-2026)',
+          '22 clubs, 65+ events per semester covered by the automation scope',
+          '15+ automated email response templates for different status/trigger combinations',
+          'Solution validated by stakeholder as addressing the primary pain point',
+          'Weekly manual email drafting time reduced to near-zero'
+        ],
+        links: { github: null, demo: '<DEMO LINK>', screenshot: '<PROJECT SCREENSHOT>' }
+      },
+      {
+        title: 'Retail AI Platform',
+        tagline: 'Real-time analytics platform for retail environments using computer vision, LLMs, and AI-powered multi-agent insights.',
+        domain: 'AI / Retail',
+        techs: ['Python', 'Angular', 'PostgreSQL', 'FastAPI', 'YOLOv8', 'OpenCV', 'Ollama LLM', 'Multi-Agent'],
+        problem: 'Retail stores lack real-time visibility into foot traffic patterns, congestion hotspots, and operational inefficiencies. Manual monitoring is labour-intensive and provides no actionable analytics or predictive insights.',
+        solution: 'A comprehensive platform combining YOLOv8 computer vision for real-time people detection, a multi-agent LLM system for intelligent alerting, and an Angular dashboard with live metrics, historical analytics, trend prediction, and staffing recommendations.',
+        outcome: [
+          'Real-time people counting and congestion detection via YOLOv8 CNN',
+          'Multi-agent LLM system for coordinated monitoring and intelligent alert generation',
+          'Live Angular dashboard with 3-second refresh intervals and historical trend analysis',
+          'Statistical analytics for peak hour detection and staffing optimisation',
+          'RAG-based knowledge system for contextual alert generation'
+        ],
+        links: { github: 'https://github.com/1himali/smart-retail-ai-system', demo: null, screenshot: '<PROJECT SCREENSHOT>' }
+      }
+    ];
+
+    const caseStudies = [
+      {
+        title: 'Why Spotify Doesnt Have Chat',
+        tagline: 'You\u2019d think a company with 600 million users would want them talking to each other. Turns out, that\u2019s exactly the trap Spotify has been avoiding for a decade.',
+        h_analysis: 'What They Learned',
+        h_insights: 'The Bigger Picture',
+        h_recommendation: 'The Verdict',
+        problem: 'The first time Spotify tried messaging, it was full open-ended social \u2014 inbox, friend activity, comments. Nobody used it meaningfully. The ones who did used it to spam. What Spotify learned wasn\u2019t \u201cusers don\u2019t want to connect.\u201d It was more precise: users don\u2019t want to manage a social identity inside a music app. The emotional overhead of maintaining a persona, replying to messages, curating what you\u2019re seen listening to \u2014 that friction is antithetical to what makes Spotify valuable.',
+        analysis: [
+          'When Spotify came back to messaging in August 2025 with \u201cMessages\u201d \u2014 a constrained one-on-one feature where you can only share Spotify content, react with emojis, and chat with people you already know \u2014 it was surgically different from what they killed eight years earlier. My take: make connection ambient, not obligatory.',
+          'Every social feature follows the same pattern: Blend generates a shared playlist from your listening data \u2014 the shareable artefact goes off-platform to Instagram. Jam ends when the session ends. Collaborative playlists are about the music, not the people. None of them require you to perform. You don\u2019t post, maintain a profile, or write captions.',
+          'This is what ambient social design looks like. Connection as a byproduct of use, not the reason you opened the app. Every feature has a defined edge \u2014 no threads, no likes on comments, no follower counts. That\u2019s not minimalism for aesthetics. It\u2019s a deliberate refusal to build moderation infrastructure for a problem they don\u2019t need to have.'
+        ],
+        insights: [
+          'The real question isn\u2019t \u201cwhy no chat.\u201d It\u2019s \u201cwhat would Spotify have to stop being?\u201d For chat to work, Spotify would need to become a place you dwell in \u2014 competing for attention against Meta, ByteDance, and X. The unspoken brand promise is: we won\u2019t demand your attention. We\u2019ll be there when you need us. Chat breaks that promise.',
+          'Artists, labels, and messaging platforms all benefit from Spotify not having chat. Artists avoid parasocial toxicity. Labels avoid controversy. WhatsApp and iMessage benefit most: every time someone discovers a track and shares it, they leave Spotify. That exit point is what keeps messaging platforms indispensable.',
+          'My take: If Spotify ever truly solved social within its walls, it would become an existential threat to every platform that benefits from music being a conversation starter that lives elsewhere. The companies benefiting most from Spotify\u2019s restraint are the ones Spotify would have to fight if it ever stopped being restrained.'
+        ],
+        recommendation: 'Spotify should keep social ambient. The most important product decision Spotify has ever made is the decision not to build something. The value is in the restraint.'
+      },
+      {
+        title: 'Whats Wrong With Dating Apps',
+        tagline: 'The structural contradiction between successful relationships and business models. Follow the logic all the way.',
+        h_analysis: 'The Mechanics',
+        h_insights: 'The Real Problem',
+        h_recommendation: 'The Fix',
+        problem: 'Imagine a dating app that actually worked \u2014 reliably produced committed relationships, cleared users off the platform in 90 days. Its best users would churn first. MAU would decline. Engagement would fall. Investor dashboards would look catastrophic. Not because the product failed. Because it succeeded. Match Group earns revenue from subscriptions and in-app purchases; users stay subscribed longer the longer they haven\u2019t found someone. A product that optimised for \u201csuccessful relationships per 1,000 users\u201d would be engineering itself out of its own revenue base.',
+        analysis: [
+          'What would the honest metric be? Relationship formation rate per active user per month \u2014 what fraction of your users went on a date and stopped needing the app within 90 days. Optimising for that eliminates infinite scroll, notification anxiety, and the dopamine of a new like at 11pm. That product would have dramatically shorter user lifetimes. Nobody will build it. My take: nobody will raise a Series A for the product that actually solves dating, and that tells you more than any dark pattern analysis does.',
+          'The Super Like mechanism exploits time pressure and emotional peaks to trigger purchases \u2014 in a casino this would be regulated. Variable reward schedules in swiping are neurologically identical to pull-lever mechanics. The reason it isn\u2019t regulated: gambling involves wagering money on financial outcomes; dating involves spending money on uncertain social outcomes. My take: the regulatory category doesn\u2019t exist yet. When it does, the playbook of every major dating app becomes a compliance problem overnight.',
+          'Dating apps work for demographics with deep local pools who photograph well and are comfortable with rapid low-stakes communication. They fail for older users, people in smaller cities, and men without paid subscriptions. The output isn\u2019t \u201cpeople likely to have a good relationship.\u201d It\u2019s \u201cpeople whose profile performs well in a local market.\u201d My take: that gap is the central design failure \u2014 and nobody is fixing it because fixing it would require optimising for something other than engagement.'
+        ],
+        insights: [
+          'The app that \u201cfixes\u201d dating would look like a calendar or an event app. The most durable relationships begin in contexts where people encounter each other repeatedly with a third thing in common. It would optimise for repeated in-person encounters over swipe velocity.',
+          'It wouldn\u2019t monetise through premium attention because that reintroduces the imbalance between paying and non-paying users. It would be so boring as a product \u2014 no endless scroll, no gamified discovery \u2014 that it would be nearly impossible to raise capital for.',
+          'What dating apps actually measure: physical first impression, supply-demand ratio in your geography, and willingness to pay for visibility. Not compatibility. That gap between what the product claims to measure and what it actually measures is the central design failure.'
+        ],
+        recommendation: 'The product that solves dating isn\u2019t investable under current VC incentive structures. If you want to fix dating, build something that optimises for getting people off the app. Just don\u2019t expect investors to thank you for it.'
+      },
+      {
+        title: 'Why WhatsApp Payments Isnt Winning Faster',
+        tagline: '500 million users. Already on their phones. Already trusted with their most private conversations. Yet its UPI market share barely registers.',
+        h_analysis: 'The Obstacles',
+        h_insights: 'The Core Issue',
+        h_recommendation: 'The Path Forward',
+        problem: 'PhonePe handles ~48% of all UPI transaction volume in India \u2014 over 9,400 million transactions in FY25. WhatsApp\u2019s share is negligibly small despite being available to its entire Indian user base since NPCI removed onboarding limits in January 2025. \u201cUsers\u201d is not a monolithic metric. WhatsApp\u2019s 500M India users are messaging-context users \u2014 on the app to talk, not to transact. PhonePe\u2019s users are payment-intent users. Those are different cognitive modes, habits, and contexts.',
+        analysis: [
+          'To win, WhatsApp would need to build trust with Indian regulators around data sovereignty \u2014 but Meta\u2019s privacy reputation is a structural liability. It would need to acquire merchants through on-ground sales forces \u2014 but that requires a dedicated business unit, hard to justify when the parent company\u2019s core business is advertising. It would need to localise data storage in India without compromising end-to-end encryption. My take: those last two requirements pull in opposite directions and there is no clean resolution.',
+          'Trust in a payments app is earned through a specific ritual: being the first app a merchant puts on their phone, being there when the first confused customer asks \u201chow do I pay you?\u201d PhonePe and Google Pay earned this at India\u2019s post-demonetisation moment in 2016\u201317. WhatsApp arrived late, launched in a phased rollout, showed up as a feature inside a chat app. My take: it never performed the ritual of being someone\u2019s first payment. First-mover advantage in payments isn\u2019t about being first to market. It\u2019s about being there when the habit forms.',
+          'A feature requires awareness and intent. A habit requires a trigger, a routine, and a reward. PhonePe attached to a merchant\u2019s QR code (trigger), made scanning frictionless (routine), and delivered instant audio confirmation (reward). WhatsApp Payments is a feature inside a product you opened for a different reason. My take: when the payment habit is already entrenched, a late-arriving feature inside a chat app cannot dislodge it without offering something categorically better.'
+        ],
+        insights: [
+          'Payments is a habit, not a feature. Habits need a trigger, routine, and reward that reinforce until the action precedes conscious thought.',
+          'NPCI built UPI as public infrastructure. The 30% market cap rule was designed to prevent any single player from controlling the rails. If WhatsApp dominated, a platform governed by US law and Meta\u2019s ad incentives would control India\u2019s transaction layer.',
+          'My take: The question of \u201cwho owns the rails\u201d is never just a product question. It\u2019s a sovereignty question. And NPCI knows it.'
+        ],
+        recommendation: 'WhatsApp would need to offer something categorically better than the entrenched habit it is trying to replace. It hasn\u2019t yet. And it may be structurally unable to, given the contradictions between what winning in payments requires and what remaining WhatsApp demands.'
+      },
+      {
+        title: 'Models vs Agents vs Coding Assistants',
+        tagline: 'Try explaining the difference to a non-technical PM. If you struggle, that\u2019s not their gap. It\u2019s a vocabulary problem the whole industry has.',
+        h_analysis: 'The Distinction',
+        h_insights: 'The Implications',
+        h_recommendation: 'The New Role',
+        problem: 'Most people using AI tools today live in the ambiguous middle \u2014 using assistants for in-flow work and increasingly using agents for batch operations \u2014 without a clean vocabulary for what they\u2019re doing. The vocabulary matters because the risk profile is completely different. A coding assistant completes your sentence; an agent given a goal acts autonomously across your entire repository.',
+        analysis: [
+          'Too much autonomy too early = confident wrongness at scale. An agent refactors your auth module incorrectly, runs tests that don\u2019t catch the regression, opens a plausible-looking PR. Silent error propagation. Too little autonomy = expensive autocomplete. You interrupt every two steps. My take: the calibration question isn\u2019t \u201chow smart is the agent.\u201d It\u2019s \u201chow well-defined is the task, and how recoverable is a wrong answer?\u201d',
+          'MCP (Model Context Protocol) by Anthropic in 2024 solved the M\u00d7N integration problem: one protocol, any AI app to any tool without custom connectors. The real unlock: an agent can now read your CRM, write to your project tracker, query your database, and push a summary to Slack in a single session. My take: the unlock isn\u2019t \u201cAI can use tools.\u201d It\u2019s that the tool ecosystem is now programmable at the protocol level, not the API level.',
+          '\u201cDone\u201d for a human includes unstated criteria: readable code, maintained conventions, no tech debt, handled edge cases. An agent optimises for what it can measure \u2014 tests pass, no lint errors. The disagreement between these definitions is where real deployments break down. My take: prompting well is the new requirements engineering.'
+        ],
+        insights: [
+          'Agents work best when the task has clear success criteria, the environment provides honest feedback, and mistakes are cheap to reverse. They break when any of those three conditions are missing.',
+          'The developer\u2019s role shifts from producer to specifier and reviewer. Writing code becomes a smaller fraction of the job; defining what code should do precisely enough for an agent to execute it becomes the primary activity.',
+          'The new role \u2014 AI workflow architect or agent product manager \u2014 decomposes engineering goals into agent-executable tasks, designs review loops, and owns where human judgment stays in the loop. My take: it\u2019s currently being performed informally by senior engineers who haven\u2019t been told that\u2019s their job. In two years it\u2019ll be a job description.'
+        ],
+        recommendation: 'Calibrate autonomy based on task definition, feedback quality, and mistake recovery cost. The developer shifts from producer to specifier and reviewer. The ones who learn to define \u201cdone\u201d precisely enough for an agent to hit it will be the ones who thrive.'
+      },
+      {
+        title: 'How Data Labeling Became a Billion-Dollar Industry',
+        tagline: 'Before every AI demo. Before every ChatGPT answer. A person in Nairobi or Manila or Caracas drew a box around something and clicked \u201csubmit.\u201d',
+        h_analysis: 'The Chain',
+        h_insights: 'The Fragility',
+        h_recommendation: 'The Moat',
+        problem: 'In India, Kenya, the Philippines, Venezuela, and Colombia, workers spend their days drawing bounding boxes around pedestrians, tagging emotional content in text, and rating chatbot answers. In Kenya, they were paid less than two euros an hour to label graphic content so ChatGPT\u2019s safety systems could learn what not to say. They are almost never talked about because their invisibility is a feature of how the product is sold. My take: \u201cAI\u201d sounds like a computation breakthrough. \u201c200,000 workers in the Global South manually labeling your data\u201d sounds like an outsourcing operation \u2014 less fundable, less narratable as innovation.',
+        analysis: [
+          'The company commissioning the labels decides \u201cquality.\u201d The annotators applying them are paid per label, not per insight. The researchers who wrote the guidelines rarely revisit them. The people who should question them \u2014 ethicists, domain experts, affected communities \u2014 are never in the room. My take: bias isn\u2019t injected. It\u2019s inherited through a chain of delegation where nobody with authority to question the frame is close enough to the data.',
+          'Scale AI started as a labeling API for self-driving cars. By May 2026, it held a $500M Pentagon contract for AI on classified networks. The company that controls data readiness infrastructure concentrates power more than the company that builds the model. Scale AI is Meta-backed and now deploys on Pentagon top-secret networks. My take: the question of who controls the pipelines that train military AI is one public discourse hasn\u2019t caught up with yet.',
+          'When models can label their own training data, the human-labeling-at-scale model loses its value proposition. Surviving companies will own domain-specific ground truth \u2014 medical imaging labels by radiologists, legal annotations by lawyers, industrial data by certified engineers. The commodity middle compresses toward zero. My take: the labeling companies that don\u2019t see this coming are building their own obsolescence.'
+        ],
+        insights: [
+          'Venezuela does a disproportionate share of global labeling due to economic collapse. English-literate, educated workers annotate data on Appen and Toloka to survive hyperinflation. Dollar rates that are poverty wages in San Francisco are survival income in Caracas.',
+          'This creates a structural dependency running both ways: Venezuelan workers depend on demand for human annotation; AI companies depend on cheap, skilled labour in conditions that make it underpriced.',
+          'My take: If Venezuela\u2019s internet degrades, if politics affect payment platforms, or if the economy recovers enough to raise wages, the annotation supply chain for several major AI products gets disrupted overnight. That\u2019s not a risk anyone is disclosing in their S-1.'
+        ],
+        recommendation: 'The commodity middle compresses toward zero. High-trust, high-expertise vertical annotation is the moat. The companies that survive will own domain-specific, irreplaceable ground truth before the floor drops out of the horizontal business.'
+      },
+      {
+        title: 'Why UPI Won and Wallets Lost',
+        tagline: 'In 2016, Paytm had more users, more brand recall, and more capital than any UPI app. By 2026, its UPI share sat at 6\u20137%. Here\u2019s why.',
+        h_analysis: 'The Design Flaw',
+        h_insights: 'The Power Shift',
+        h_recommendation: 'The Unresolved Question',
+        problem: 'Paytm didn\u2019t lose to a competitor. It lost to a design decision. Its core product required users to preload money into Paytm\u2019s ledger. That friction made sense when the alternative was cash. It became absurd the moment UPI let you pay directly from your bank account. Paytm\u2019s network was semi-closed; UPI was fully interoperable \u2014 any bank, any app, any merchant. My take: no amount of brand spend fixes a structural mismatch between your product architecture and what the market moved to.',
+        analysis: [
+          'Pre-loading money creates two frictions: the act of loading and the anxiety of balance management. UPI eliminated both by treating your bank account as the wallet. You never top up. You never check a separate balance. My take: one design difference \u2014 where the money lives \u2014 eliminated an entire category of financial product. That\u2019s the kind of upstream decision that looks obvious in hindsight and is impossible to recover from.',
+          'PhonePe and Google Pay control 83% of UPI volume. The rails they run on are owned by NPCI, a not-for-profit set up by RBI. NPCI\u2019s response has been a 30% market cap rule repeatedly extended without enforcement. My take: India built the most sophisticated payments infrastructure in the world and watched two foreign companies become its face. The 30% cap is the regulatory equivalent of a strongly-worded letter.',
+          'Zero MDR was a policy call by the Government of India in 2020. Banks paid for it. Merchants and consumers won. The RBI opposed it; the Finance Ministry overruled it. My take: sometimes the most important product decisions aren\u2019t made by PMs. The Commerce Ministry saw it as economic inclusion; RBI saw it as a financial services question. The inclusion framing won and accelerated adoption by years.'
+        ],
+        insights: [
+          'If UPI is the OS, the payment app is the App Store. That layer is controlled by PhonePe and Google Pay. NPCI\u2019s own BHIM app barely registers. The App Store controls discovery, defaults, and the first point of contact for new financial products.',
+          'When PhonePe launches insurance or lending, it surfaces to 500 million users at the moment of a transaction. That is extraordinary distribution.',
+          'My take: NPCI built the OS. PhonePe and Google shipped the App Store. The question of whether those should be the same company or different ones is unresolved, and the window to resolve it is closing. Every year the habit deepens and the switching cost grows.'
+        ],
+        recommendation: 'The interface layer controls discovery, defaults, and financial product bundling. Sovereignty questions remain unresolved, and the window to resolve it narrows with every transaction that deepens the habit on a foreign-owned interface.'
+      },
+      {
+        title: 'How PhonePe Makes Money',
+        tagline: 'PhonePe\u2019s payments make close to zero margin. It crossed \u20b95,000 crore revenue in FY24. Those two facts coexist because PhonePe is not a payments company.',
+        h_analysis: 'The Strategy',
+        h_insights: 'The Moat',
+        h_recommendation: 'The Future',
+        problem: 'PhonePe is a financial services distributor that acquired 500M users through a free payments utility. Payments is the loss leader. The financial services business \u2014 insurance, mutual funds, loans \u2014 earns commissions and origination fees with materially higher margins. My take: the analogy that holds is Amazon. AWS funds the retail business. PhonePe\u2019s payments business funds the acquisition of customers it then cross-sells into financial services.',
+        analysis: [
+          'A super app isn\u2019t defined by feature count. It\u2019s defined by a behavioural shift where the app becomes the default interface for entire categories of life. PhonePe has payments, insurance, loans, travel, bill payments. Most users open it to pay and occasionally discover other features. My take: the gap between \u201cpayments app with verticals\u201d and \u201csuper app\u201d is the gap between a user who pays with PhonePe and a user who manages their financial life through it. Lending \u2014 which creates ongoing financial relationships \u2014 is probably the feature that tips it.',
+          'Walmart ownership creates both strategic optionality and regulatory exposure. PhonePe could anchor Walmart\u2019s India commerce ambitions, but building Walmart-brand financial products on PhonePe\u2019s transaction data would invite scrutiny. My take: foreign ownership is both the exit strategy and the ceiling. Walmart cannot do what a domestically-owned fintech could with the same data.',
+          'If NPCI introduces 0.2\u20130.3% MDR on UPI, a per-transaction cost appears. The players with the deepest merchant relationships and most bundled offerings absorb it best. My take: MDR monetisation might be the best thing that could happen to PhonePe\u2019s competitive position. The SmartSpeaker becomes more defensible, not less.'
+        ],
+        insights: [
+          'The SmartSpeaker is the most underrated product decision in Indian fintech. A QR code is passive; the SmartSpeaker confirms payment audibly \u2014 operationally significant in a noisy kirana store.',
+          'The device creates a subscription relationship with the merchant \u2014 recurring fee, independent of transactions. It turns a confirmation sound into a merchant acquisition channel, a retention tool, and a subscription revenue line simultaneously.',
+          'My take: PhonePe turned a confirmation sound into all three. Either genius product thinking or an accident that turned out brilliantly. Either way, at millions of kirana stores, it compounds.'
+        ],
+        recommendation: 'PhonePe is closing the super app gap, and the SmartSpeaker is the moat that compound interest built. The lending product may tip the balance from utility to financial relationship. The payments app is the loss leader; the financial services distribution business is where the economics live.'
+      },
+      {
+        title: 'Instagram Became Snapchat',
+        tagline: 'Kevin Systrom watched his users share Snapchat Stories on Instagram. His response: build Stories. His defence: none required.',
+        h_analysis: 'The Playbook',
+        h_insights: 'The Real Winner',
+        h_recommendation: 'The Lesson',
+        problem: 'At SXSW 2019, Systrom admitted Instagram added Stories because users were sharing Snapchat content on the platform. No apology. The industry didn\u2019t ask for one. This reveals how the industry resolved the originality question: execution and distribution are the moat, not the idea. Snapchat invented the format. Instagram shipped it to a billion people and made it a daily habit faster. My take: if a format can be implemented by anyone, it \u201cbelongs\u201d to whoever scales it. Legally correct in most cases. Ethically convenient in all of them.',
+        analysis: [
+          'Snapchat bet on cultural invention, teenage identity, and self-expression. Instagram bet on network density, advertiser relationships, and Facebook\u2019s distribution machine. By raw metrics, Instagram won. Snapchat built a novel product three times \u2014 Stories, disappearing content, AR filters. Instagram operationalised all three. My take: most investors would rather back the company that executes others\u2019 innovation. Lower variance, more predictable outcomes.',
+          'What couldn\u2019t Instagram copy? The native audience. Snapchat was built for a specific way teenagers communicate \u2014 unpolished, ephemeral, deliberately unserious. That cultural identity was real and durable. Even after Stories, a generation used Snapchat for a kind of communication Instagram\u2019s curated norms didn\u2019t accommodate. My take: Snapchat survived but didn\u2019t win the market it invented. The native audience was real protection, just not enough when the competitor had a billion-person graph and no shame about copying.',
+          'Facebook offered $3B for Snapchat in 2013. Spiegel said no. Facebook spent the next three years shipping everything Snap had. This is the two-stage playbook: acquire first, if that fails, replicate. My take: Spiegel\u2019s bet that cultural identity would protect him partially worked \u2014 Snapchat survived. But turning down $3B is either the most principled decision in tech history or the most expensive one. Probably both.'
+        ],
+        insights: [
+          'Instagram\u2019s product strategy: find where attention lives, ship a version, attach to the existing graph, let network effects do the rest. It\u2019s a strategy with no creative coherence and exceptional commercial logic.',
+          'Instagram began as a photo app. It became a Stories platform, a short-video platform, a shopping platform. Critics say it lost its identity. Two billion monthly actives suggest users don\u2019t care. Platform identity matters more to builders than consumers.',
+          'My take: The companies that invent formats get the credit. The ones that scale them get the money. Whether that\u2019s something to admire depends on whether you think product design owes anything to the people whose ideas it borrows. Instagram\u2019s answer, demonstrated over a decade, is no.'
+        ],
+        recommendation: 'Snapchat survived but didn\u2019t win the attention market it helped invent. Instagram\u2019s strategy \u2014 ship a copy, attach it to a billion-person graph, let the network effect do the rest \u2014 has no creative coherence and exceptional commercial logic. The companies that invent formats get the credit. The companies that scale them get the money.'
+      }
+    ];
+
+    const findings = [
+      {
+        title: 'The Evolution of the Minimum Buyable Product',
+        blocks: [
+          {
+            heading: 'Era 1: The MVP. Build to Learn.',
+            content: [
+              'Dropbox shipped a demo video instead of software. Airbnb photographed one apartment. Zappos put up a website before owning a single shoe.',
+              'The point was never ship something good. It was ship something true.',
+              'And for a decade \u2014 when VC was flowing and acquisition was cheap \u2014 that was enough.',
+              'Then something changed. The market got crowded. Attention got expensive. Users became ruthless about not coming back.'
+            ]
+          },
+          {
+            heading: 'Era 2: The MVVP. Build to Spread.',
+            content: [
+              'The Minimum Viral Viable Product isn\u2019t in any textbook. It\u2019s a behaviour observation that builders independently arrived at as markets saturated.',
+              'The insight: viability isn\u2019t enough if nobody tells anyone about it.',
+              'The MVVP adds one question: does using this product naturally create a reason to share it? Not \u201ccan users share it if they want to\u201d \u2014 that\u2019s a feature. But does the act of using it produce a social artefact, an invitation loop, a visible signal?',
+              'Calendly: to use it, you must send someone a Calendly link. Figma: to collaborate, you must invite colleagues. WhatsApp: to chat, you must get the other person on the platform.',
+              'My take: Viral coefficient compounds violently above 1.0. A product at 1.1 doesn\u2019t just grow \u2014 it accelerates. Designing for shareability by default is now a product requirement, not a growth team\u2019s job.'
+            ]
+          },
+          {
+            heading: 'Era 3: The MBP. Build to Charge.',
+            content: [
+              'The Minimum Buyable Product doesn\u2019t ask \u201cwill users try this?\u201d or \u201cwill they tell their friends?\u201d It asks: will they pay for this with real money, right now, without a trial, without a discount?',
+              'Freemium products can have 100,000 users who never convert. MVPs can have thousands of enthusiastic beta testers who vanish when a price appears.',
+              'Name your buyer. Not \u201cusers.\u201d A specific person with a specific budget and a specific problem. Ship enough value to survive pricing scrutiny without the social lubricant of \u201cit\u2019s free anyway.\u201d',
+              'Understand that willingness to use and willingness to pay are separated by a gap that has killed more companies than bad technology.'
+            ]
+          },
+          {
+            heading: 'The Through-Line',
+            content: [
+              'Three lenses. Same product. Applied in sequence.',
+              'Does it solve a real problem? \u2192 MVP. Does using it create network gravity? \u2192 MVVP. Will someone hand over money for it? \u2192 MBP.',
+              'Products that clear one or two but not three are everywhere: 50K users and zero revenue, viral growth and 1% conversion, strong revenue from a user base too small to ever compound.',
+              'My take: Validated learning now includes learning whether your product can grow without paid acquisition and whether anyone will actually pay for it. Preferably both. Preferably before you raise your Series A.'
+            ]
+          }
+        ]
+      },
+      {
+        title: 'How Disruption Bubbles Burst: The Innovation\u2013Adaptation Ratio',
+        blocks: [
+          {
+            heading: 'Every bubble starts with something real',
+            content: [
+              'The dot-com bubble didn\u2019t begin in delusion \u2014 it began in the genuine observation that the internet was going to change commerce and communication. The AI boom didn\u2019t begin in hype \u2014 it began in LLMs doing things that were categorically impossible a few years before.',
+              'Bubbles inflate when the pace of extrapolation outstrips the pace reality can actually be built.',
+              'This is the innovation\u2013adaptation ratio: the gap between how fast new capabilities are invented and how fast the systems around them \u2014 companies, workflows, regulations, habits \u2014 can absorb them.'
+            ]
+          },
+          {
+            heading: 'When the ratio is healthy',
+            content: [
+              'Innovation gets absorbed as it arrives. The PC era through the 1980s\u201390s: hardware improved, software caught up, enterprise adoption followed at a pace that let skills and infrastructure develop in parallel.'
+            ]
+          },
+          {
+            heading: 'When the ratio breaks',
+            content: [
+              'Capital floods companies whose business plans assume an adoption curve that will take fifteen years to materialise. The technology is real. The timeline isn\u2019t.',
+              'That\u2019s the structural signature of every bubble: a legitimate capability gets over-extrapolated, capital concentrates around the extrapolation, and companies form with cost structures that require the future to arrive on a venture timeline.'
+            ]
+          },
+          {
+            heading: 'Where AI sits right now',
+            content: [
+              'The underlying capability is real. But most enterprises are still in the \u201cexperimenting with AI\u201d phase \u2014 running pilots, building internal tools, navigating procurement, security, and governance questions that will take years to resolve.',
+              'My take: The burst doesn\u2019t come from the technology failing. It comes from a catalyst that forces the market to price the adaptation lag honestly. In 1999, it was rising interest rates. In AI, it could be an enterprise reporting that their AI deployment produced no measurable productivity gain. Or a regulatory crackdown. Or simply the moment VCs stop rewarding \u201cwe\u2019re building on AI\u201d as a differentiated pitch.'
+            ]
+          },
+          {
+            heading: 'The uncomfortable version',
+            content: [
+              'Most of what gets built during an innovation wave doesn\u2019t survive the adaptation wave. Not because it was bad. Because it was early. And being early in a capital-intensive market means burning through your runway in the gap between \u201ccapability exists\u201d and \u201cmarkets are ready to pay for it.\u201d',
+              'The companies that win disruption cycles are often not the ones that invented the disruption. They\u2019re the ones that shipped at the moment the adaptation curve finally caught up.',
+              'Salesforce survived the dot-com bust because SaaS for CRM had a clear buyer, a clear ROI, and a subscription model that didn\u2019t require the whole internet to mature first.',
+              'My take: Being right about the future is necessary. Being right on time is the actual business.'
+            ]
+          }
+        ]
+      },
+      {
+        title: 'What a Professional Can Do That AI Cannot',
+        blocks: [
+          {
+            heading: 'Let\u2019s be precise about this',
+            content: [
+              'The more interesting question isn\u2019t \u201cwhat tasks can humans do that AI cannot?\u201d \u2014 that list is shrinking fast. It\u2019s: what roles require something AI structurally cannot provide?',
+              'The answer is one word: accountability.'
+            ]
+          },
+          {
+            heading: 'AI is not a legal entity',
+            content: [
+              'Under current law \u2014 US, EU, India \u2014 AI is classified as property, not a person. It cannot be sued. It cannot enter a contract. It cannot own its outputs.',
+              'Courts have already ruled that a lawyer who submits AI-generated fictitious case citations cannot use \u201cthe AI did it\u201d as a defence. The professional is held fully liable.',
+              'My take: This is not a temporary limitation pending better regulation. It\u2019s a structural feature of how accountability works. AI cannot lose a license, face prison, or suffer reputational damage.'
+            ]
+          },
+          {
+            heading: 'AI cannot own a funnel',
+            content: [
+              'AI can execute tasks within a funnel \u2014 write copy, score leads, analyse conversion data. But it cannot own a funnel.',
+              'Owning a funnel means someone is accountable for the outcome end-to-end. Someone decides which metrics matter, makes judgment calls, and is answerable when results disappoint.',
+              'That chain requires a named human who had the authority to make different choices and chose not to.'
+            ]
+          },
+          {
+            heading: 'The artifact vs entity distinction',
+            content: [
+              'Governing bodies have moved toward recognising AI-generated artifacts in narrow senses. But recognising an artifact is categorically different from recognising an entity.',
+              'An artifact is a discrete, bounded output. An entity is a continuous, accountable actor responsible for a process over time.',
+              'No governing body has moved toward declaring AI a legal entity. Not because of philosophical timidity. Because a legal entity requires the possibility of consequences \u2014 and you cannot consequentially punish a model.'
+            ]
+          },
+          {
+            heading: 'What this actually means for you',
+            content: [
+              'The practitioner who understands this clearly is not trying to compete with AI on task throughput. That race is lost. Concede it gracefully.',
+              'The practitioner competes on the capacity to be responsible for the outcome \u2014 to create trust, enable contracts, satisfy regulators.',
+              'A junior analyst who can use AI to produce work that took three people two weeks \u2014 and then stand in front of a client and own it \u2014 is more valuable than the AI that produced it.',
+              'My take: The future of professional work isn\u2019t humans vs AI. It\u2019s the more precise question: which tasks require a responsible human agent? That\u2019s where professional value is concentrating. Not in writing faster. In the willingness to say: I made this decision. I will answer for it.'
+            ]
+          }
+        ]
+      }
+    ];
+
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = projects.map((p, i) => `
+        <div class="project-card" onclick="openProject(${i})">
+          <div class="project-card-header">
+            <span class="project-domain">${p.domain}</span>
+          </div>
+          <h3 class="project-card-title">${p.title}</h3>
+          <p class="project-card-tagline">${p.tagline}</p>
+          <div class="project-card-meta">${p.techs.slice(0,4).map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
+        </div>
+      `).join('');
+    }
+
+    function openProject(index) {
+      const p = projects[index];
+      const body = document.getElementById('modalBody');
+      const links = [];
+      if (p.links.github) links.push(`<a href="${p.links.github}" target="_blank" rel="noopener" class="modal-link">GitHub</a>`);
+      if (p.links.demo) links.push(`<a href="${p.links.demo}" target="_blank" rel="noopener" class="modal-link">Demo</a>`);
+      if (p.links.screenshot) links.push(`<span class="placeholder">${p.links.screenshot}</span>`);
+
+      body.innerHTML = `
+        <div class="modal-domain">${p.domain}</div>
+        <h2 class="modal-title">${p.title}</h2>
+        <p class="modal-tagline">${p.tagline}</p>
+        <div class="modal-section">
+          <h3>Problem</h3>
+          <p>${p.problem}</p>
+        </div>
+        <div class="modal-section">
+          <h3>Solution</h3>
+          <p>${p.solution}</p>
+        </div>
+        <div class="modal-section">
+          <h3>Outcome</h3>
+          <ul>${p.outcome.map(o => `<li>${o}</li>`).join('')}</ul>
+        </div>
+        <div class="modal-section">
+          <h3>Technologies</h3>
+          <div class="modal-techs">${p.techs.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
+        </div>
+        ${links.length ? `<div class="modal-links">${links.join('')}</div>` : ''}
+      `;
+      document.getElementById('projectModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderCaseStudies() {
+      const grid = document.getElementById('csGrid');
+      grid.innerHTML = caseStudies.map((cs, i) => `
+        <div class="cs-card" onclick="openCaseStudy(${i})">
+          <h2 class="cs-title">${cs.title}</h2>
+          <p class="cs-tagline">${cs.tagline}</p>
+        </div>
+      `).join('');
+    }
+
+    function openCaseStudy(index) {
+      const cs = caseStudies[index];
+      const body = document.getElementById('modalBody');
+      body.innerHTML = `
+        <h2 class="modal-title">${cs.title}</h2>
+        <p class="modal-tagline">${cs.tagline}</p>
+        <div class="modal-section">
+          <h3>Problem</h3>
+          <p>${cs.problem}</p>
+        </div>
+        <div class="modal-section">
+          <h3>${cs.h_analysis || 'Analysis'}</h3>
+          <ul>${cs.analysis.map(a => `<li>${a}</li>`).join('')}</ul>
+        </div>
+        <div class="modal-section">
+          <h3>${cs.h_insights || 'Insights'}</h3>
+          <ul>${cs.insights.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+        <div class="modal-section">
+          <h3>${cs.h_recommendation || 'Recommendation'}</h3>
+          <p>${cs.recommendation}</p>
+        </div>
+      `;
+      document.getElementById('projectModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderFindings() {
+      const grid = document.getElementById('findingsGrid');
+      grid.innerHTML = findings.map(f => {
+        const blocks = f.blocks.map(b => {
+          let content = b.content.map(c => `<p>${c}</p>`).join('');
+          let bullets = b.bullets ? `<ul>${b.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
+          return `<div class="finding-block"><h3>${b.heading}</h3>${content}${bullets}</div>`;
+        }).join('');
+        return `<div class="finding-card"><h2>${f.title}</h2>${blocks}</div>`;
+      }).join('');
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('projectModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    renderProjects();
+    renderCaseStudies();
+    renderFindings();
+  </script>
+</body>
+</html>
