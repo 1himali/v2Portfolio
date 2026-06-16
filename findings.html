@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Findings by Himali Suresh">
+  <title>Findings — Himali Suresh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Himali Suresh</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a class="nav-link" href="index.html">About</a></li>
+          <li><a class="nav-link" href="projects.html">Projects</a></li>
+          <li><a class="nav-link" href="case-studies.html">Case Studies</a></li>
+          <li><a class="nav-link active" href="findings.html">Findings</a></li>
+          <li><a class="nav-link" href="proofs.html">Proofs</a></li>
+          <li><a class="nav-link recruit-link" href="https://drive.google.com/file/d/16wgxD18yhUptIYQkDp76Jr0l8iT6JJI2/view?usp=sharing" target="_blank" rel="noopener">Recruit</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page active">
+    <div class="container">
+      <div class="page-header">
+        <h1>Findings</h1>
+        <p>Cross-domain observations on product strategy, market dynamics, and professional value.</p>
+      </div>
+      <div class="findings-grid" id="findingsGrid"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:himalis106@gmail.com" class="footer-link">Email</a>
+        <a href="https://github.com/1himali" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      </div>
+      <div class="footer-copy">Portfolio 2026</div>
+    </div>
+  </footer>
+
+  <script src="common.js"></script>
+  <script>
+    const findings = [
+      {
+        title: 'The Evolution of the Minimum Buyable Product',
+        blocks: [
+          {
+            heading: 'Era 1: The MVP. Build to Learn.',
+            content: [
+              'Dropbox shipped a demo video instead of software. Airbnb photographed one apartment. Zappos put up a website before owning a single shoe.',
+              'The point was never ship something good. It was ship something true.',
+              'And for a decade \u2014 when VC was flowing and acquisition was cheap \u2014 that was enough.',
+              'Then something changed. The market got crowded. Attention got expensive. Users became ruthless about not coming back.'
+            ]
+          },
+          {
+            heading: 'Era 2: The MVVP. Build to Spread.',
+            content: [
+              'The Minimum Viral Viable Product isn\u2019t in any textbook. It\u2019s a behaviour observation that builders independently arrived at as markets saturated.',
+              'The insight: viability isn\u2019t enough if nobody tells anyone about it.',
+              'The MVVP adds one question: does using this product naturally create a reason to share it? Not \u201ccan users share it if they want to\u201d \u2014 that\u2019s a feature. But does the act of using it produce a social artefact, an invitation loop, a visible signal?',
+              'Calendly: to use it, you must send someone a Calendly link. Figma: to collaborate, you must invite colleagues. WhatsApp: to chat, you must get the other person on the platform.',
+              'My take: Viral coefficient compounds violently above 1.0. A product at 1.1 doesn\u2019t just grow \u2014 it accelerates. Designing for shareability by default is now a product requirement, not a growth team\u2019s job.'
+            ]
+          },
+          {
+            heading: 'Era 3: The MBP. Build to Charge.',
+            content: [
+              'The Minimum Buyable Product doesn\u2019t ask \u201cwill users try this?\u201d or \u201cwill they tell their friends?\u201d It asks: will they pay for this with real money, right now, without a trial, without a discount?',
+              'Freemium products can have 100,000 users who never convert. MVPs can have thousands of enthusiastic beta testers who vanish when a price appears.',
+              'Name your buyer. Not \u201cusers.\u201d A specific person with a specific budget and a specific problem. Ship enough value to survive pricing scrutiny without the social lubricant of \u201cit\u2019s free anyway.\u201d',
+              'Understand that willingness to use and willingness to pay are separated by a gap that has killed more companies than bad technology.'
+            ]
+          },
+          {
+            heading: 'The Through-Line',
+            content: [
+              'Three lenses. Same product. Applied in sequence.',
+              'Does it solve a real problem? \u2192 MVP. Does using it create network gravity? \u2192 MVVP. Will someone hand over money for it? \u2192 MBP.',
+              'Products that clear one or two but not three are everywhere: 50K users and zero revenue, viral growth and 1% conversion, strong revenue from a user base too small to ever compound.',
+              'My take: Validated learning now includes learning whether your product can grow without paid acquisition and whether anyone will actually pay for it. Preferably both. Preferably before you raise your Series A.'
+            ]
+          }
+        ]
+      },
+      {
+        title: 'How Disruption Bubbles Burst: The Innovation\u2013Adaptation Ratio',
+        blocks: [
+          {
+            heading: 'Every bubble starts with something real',
+            content: [
+              'The dot-com bubble didn\u2019t begin in delusion \u2014 it began in the genuine observation that the internet was going to change commerce and communication. The AI boom didn\u2019t begin in hype \u2014 it began in LLMs doing things that were categorically impossible a few years before.',
+              'Bubbles inflate when the pace of extrapolation outstrips the pace reality can actually be built.',
+              'This is the innovation\u2013adaptation ratio: the gap between how fast new capabilities are invented and how fast the systems around them \u2014 companies, workflows, regulations, habits \u2014 can absorb them.'
+            ]
+          },
+          {
+            heading: 'When the ratio is healthy',
+            content: [
+              'Innovation gets absorbed as it arrives. The PC era through the 1980s\u201390s: hardware improved, software caught up, enterprise adoption followed at a pace that let skills and infrastructure develop in parallel.'
+            ]
+          },
+          {
+            heading: 'When the ratio breaks',
+            content: [
+              'Capital floods companies whose business plans assume an adoption curve that will take fifteen years to materialise. The technology is real. The timeline isn\u2019t.',
+              'That\u2019s the structural signature of every bubble: a legitimate capability gets over-extrapolated, capital concentrates around the extrapolation, and companies form with cost structures that require the future to arrive on a venture timeline.'
+            ]
+          },
+          {
+            heading: 'Where AI sits right now',
+            content: [
+              'The underlying capability is real. But most enterprises are still in the \u201cexperimenting with AI\u201d phase \u2014 running pilots, building internal tools, navigating procurement, security, and governance questions that will take years to resolve.',
+              'My take: The burst doesn\u2019t come from the technology failing. It comes from a catalyst that forces the market to price the adaptation lag honestly. In 1999, it was rising interest rates. In AI, it could be an enterprise reporting that their AI deployment produced no measurable productivity gain. Or a regulatory crackdown. Or simply the moment VCs stop rewarding \u201cwe\u2019re building on AI\u201d as a differentiated pitch.'
+            ]
+          },
+          {
+            heading: 'The uncomfortable version',
+            content: [
+              'Most of what gets built during an innovation wave doesn\u2019t survive the adaptation wave. Not because it was bad. Because it was early. And being early in a capital-intensive market means burning through your runway in the gap between \u201ccapability exists\u201d and \u201cmarkets are ready to pay for it.\u201d',
+              'The companies that win disruption cycles are often not the ones that invented the disruption. They\u2019re the ones that shipped at the moment the adaptation curve finally caught up.',
+              'Salesforce survived the dot-com bust because SaaS for CRM had a clear buyer, a clear ROI, and a subscription model that didn\u2019t require the whole internet to mature first.',
+              'My take: Being right about the future is necessary. Being right on time is the actual business.'
+            ]
+          }
+        ]
+      },
+      {
+        title: 'What a Professional Can Do That AI Cannot',
+        blocks: [
+          {
+            heading: 'Let\u2019s be precise about this',
+            content: [
+              'The more interesting question isn\u2019t \u201cwhat tasks can humans do that AI cannot?\u201d \u2014 that list is shrinking fast. It\u2019s: what roles require something AI structurally cannot provide?',
+              'The answer is one word: accountability.'
+            ]
+          },
+          {
+            heading: 'AI is not a legal entity',
+            content: [
+              'Under current law \u2014 US, EU, India \u2014 AI is classified as property, not a person. It cannot be sued. It cannot enter a contract. It cannot own its outputs.',
+              'Courts have already ruled that a lawyer who submits AI-generated fictitious case citations cannot use \u201cthe AI did it\u201d as a defence. The professional is held fully liable.',
+              'My take: This is not a temporary limitation pending better regulation. It\u2019s a structural feature of how accountability works. AI cannot lose a license, face prison, or suffer reputational damage.'
+            ]
+          },
+          {
+            heading: 'AI cannot own a funnel',
+            content: [
+              'AI can execute tasks within a funnel \u2014 write copy, score leads, analyse conversion data. But it cannot own a funnel.',
+              'Owning a funnel means someone is accountable for the outcome end-to-end. Someone decides which metrics matter, makes judgment calls, and is answerable when results disappoint.',
+              'That chain requires a named human who had the authority to make different choices and chose not to.'
+            ]
+          },
+          {
+            heading: 'The artifact vs entity distinction',
+            content: [
+              'Governing bodies have moved toward recognising AI-generated artifacts in narrow senses. But recognising an artifact is categorically different from recognising an entity.',
+              'An artifact is a discrete, bounded output. An entity is a continuous, accountable actor responsible for a process over time.',
+              'No governing body has moved toward declaring AI a legal entity. Not because of philosophical timidity. Because a legal entity requires the possibility of consequences \u2014 and you cannot consequentially punish a model.'
+            ]
+          },
+          {
+            heading: 'What this actually means for you',
+            content: [
+              'The practitioner who understands this clearly is not trying to compete with AI on task throughput. That race is lost. Concede it gracefully.',
+              'The practitioner competes on the capacity to be responsible for the outcome \u2014 to create trust, enable contracts, satisfy regulators.',
+              'A junior analyst who can use AI to produce work that took three people two weeks \u2014 and then stand in front of a client and own it \u2014 is more valuable than the AI that produced it.',
+              'My take: The future of professional work isn\u2019t humans vs AI. It\u2019s the more precise question: which tasks require a responsible human agent? That\u2019s where professional value is concentrating. Not in writing faster. In the willingness to say: I made this decision. I will answer for it.'
+            ]
+          }
+        ]
+      }
+    ];
+
+    function renderFindings() {
+      const grid = document.getElementById('findingsGrid');
+      grid.innerHTML = findings.map(f => {
+        const blocks = f.blocks.map(b => {
+          let content = b.content.map(c => `<p>${c}</p>`).join('');
+          return `<div class="finding-block"><h3>${b.heading}</h3>${content}</div>`;
+        }).join('');
+        return `<div class="finding-card"><h2>${f.title}</h2>${blocks}</div>`;
+      }).join('');
+    }
+
+    renderFindings();
+  </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects by Himali Suresh">
+  <title>Projects — Himali Suresh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Himali Suresh</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a class="nav-link" href="index.html">About</a></li>
+          <li><a class="nav-link active" href="projects.html">Projects</a></li>
+          <li><a class="nav-link" href="case-studies.html">Case Studies</a></li>
+          <li><a class="nav-link" href="findings.html">Findings</a></li>
+          <li><a class="nav-link" href="proofs.html">Proofs</a></li>
+          <li><a class="nav-link recruit-link" href="https://drive.google.com/file/d/16wgxD18yhUptIYQkDp76Jr0l8iT6JJI2/view?usp=sharing" target="_blank" rel="noopener">Recruit</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page active">
+    <div class="container">
+      <div class="page-header">
+        <h1>Projects</h1>
+        <p>Shipped systems across hospitality, campus administration, fintech, community, and automation.</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:himalis106@gmail.com" class="footer-link">Email</a>
+        <a href="https://github.com/1himali" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      </div>
+      <div class="footer-copy">Portfolio 2026</div>
+    </div>
+  </footer>
+
+  <script src="common.js"></script>
+  <script>
+    const projects = [
+      {
+        title: 'RAISEit',
+        tagline: 'A real-time auction engine with structured fundraising workflows, designed for transparent competitive bidding at scale.',
+        slug: 'raiseit',
+        domain: 'Events / Fundraising',
+        techs: ['Next.js', 'React', 'Tailwind CSS', 'Node.js', 'REST APIs', 'WebSockets', 'MongoDB', 'JWT']
+      },
+      {
+        title: 'Property Management System (PMS)',
+        tagline: 'A full-stack Property Management System built from scratch — covering rooms, dining, billing, inventory, payroll, and analytics for independent hospitality businesses.',
+        slug: 'pms',
+        domain: 'Hospitality / SaaS',
+        techs: ['Java 21', 'Spring Boot 3.5', 'PostgreSQL', 'Flyway', 'JWT', 'Swagger', 'JUnit 5', 'Testcontainers']
+      },
+      {
+        title: 'My Hood',
+        tagline: 'A neighbourhood-first platform connecting residents through local discovery, community updates, and shared civic participation.',
+        slug: 'myhood',
+        domain: 'Community',
+        techs: ['HTML', 'CSS', 'JavaScript']
+      },
+      {
+        title: 'Vibranium',
+        tagline: 'AI-powered SaaS product intelligence workspace with market analysis, competitor discovery, and strategic insights.',
+        slug: 'vibranium',
+        domain: 'SaaS / AI',
+        techs: ['React 18', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Recharts', 'Firebase Auth', 'Firestore', 'FastAPI']
+      },
+      {
+        title: 'Email Automation System (RPA)',
+        tagline: 'A UiPath-based RPA solution that eliminates repetitive email workflows for university administrative staff managing 22 student clubs.',
+        slug: 'email-automation',
+        domain: 'Workflow Automation',
+        techs: ['UiPath', 'Google Sheets', 'Gmail']
+      },
+      {
+        title: 'Retail AI Platform',
+        tagline: 'Real-time analytics platform for retail environments using computer vision, LLMs, and AI-powered multi-agent insights.',
+        slug: 'retail-ai-platform',
+        domain: 'AI / Retail',
+        techs: ['Python', 'Angular', 'PostgreSQL', 'FastAPI', 'YOLOv8', 'OpenCV', 'Ollama LLM', 'Multi-Agent']
+      }
+    ];
+
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = projects.map(p => `
+        <a class="project-card" href="projects/${p.slug}.html">
+          <div class="project-card-header">
+            <span class="project-domain">${p.domain}</span>
+          </div>
+          <h3 class="project-card-title">${p.title}</h3>
+          <p class="project-card-tagline">${p.tagline}</p>
+          <div class="project-card-meta">${p.techs.slice(0,4).map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
+        </a>
+      `).join('');
+    }
+
+    renderProjects();
+  </script>
+</body>
+</html>
