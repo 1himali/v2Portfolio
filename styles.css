@@ -561,6 +561,7 @@ img { max-width: 100%; height: auto; display: block; }
 .xp-accent-green { background: #3a7d44; }
 .xp-accent-blue { background: #2a6f97; }
 .xp-accent-purple { background: #7c3aed; }
+.xp-accent-amber { background: #c8762a; }
 
 .xp-card-body {
   padding: 24px;
