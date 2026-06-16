@@ -1,3 +1,11 @@
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) { animation: 0.25s ease-out both vtFadeOut; }
+::view-transition-new(root) { animation: 0.25s ease-out both vtFadeIn; }
+
+@keyframes vtFadeOut { to { opacity: 0; } }
+@keyframes vtFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
 :root {
   --ink: #0f0e0c;
   --paper: #f5f1ea;
@@ -47,6 +55,7 @@ body::before {
   pointer-events: none;
   z-index: 9999;
   opacity: 0.4;
+  view-transition-name: none;
 }
 
 a { color: var(--rust); text-decoration: none; }
@@ -56,6 +65,7 @@ img { max-width: 100%; height: auto; display: block; }
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: var(--paper); border-bottom: 1px solid var(--rule); height: var(--header-h);
+  view-transition-name: none;
 }
 .header-inner {
   max-width: var(--max-width); margin: 0 auto; padding: 0 24px;

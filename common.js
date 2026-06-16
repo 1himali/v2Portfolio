@@ -17,10 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (themeToggle) {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setTheme(true);
-    }
+    themeToggle.textContent = document.documentElement.classList.contains('dark') ? '☀' : '☾';
     themeToggle.addEventListener('click', function () {
       setTheme(!document.documentElement.classList.contains('dark'));
     });
