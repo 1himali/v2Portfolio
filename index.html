@@ -177,6 +177,22 @@
         scene.appendChild(stop);
       });
 
+      function trimLine() {
+        var firstDot = document.querySelector('.tl-dot-btn');
+        var lastDot = document.querySelector('.tl-dot-btn:last-child');
+        if (!firstDot || !lastDot) return;
+        var sceneRect = scene.getBoundingClientRect();
+        var firstRect = firstDot.getBoundingClientRect();
+        var lastRect = lastDot.getBoundingClientRect();
+        var line = document.querySelector('.tl-line');
+        var top = firstRect.top - sceneRect.top + firstRect.height / 2;
+        var bottom = sceneRect.bottom - (lastRect.top + lastRect.height / 2);
+        line.style.top = top + 'px';
+        line.style.bottom = bottom + 'px';
+      }
+      trimLine();
+      window.addEventListener('resize', trimLine);
+
       setRange(defaultIdx);
       fill.style.height = (100 - stops[defaultIdx].pct) + '%';
       current = defaultIdx;

@@ -577,6 +577,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .tl-stop {
+  position: relative;
   display: grid;
   grid-template-columns: 24px 1fr;
   gap: 20px;
@@ -643,7 +644,7 @@ img { max-width: 100%; height: auto; display: block; }
   left: 23px;
   top: 50%;
   transform: translateY(-50%);
-  width: 14px;
+  width: 21px;
   height: 1.5px;
   background: var(--ink);
   opacity: 0;
