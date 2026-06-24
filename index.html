@@ -69,9 +69,7 @@
           <p>The work I've done spans across Product Ownership, Consulting, Product and UI/UX Design, a B2C venture, Operations and SEO.</p>
         </div>
         <div class="tl-scene" id="tlScene">
-          <div class="tl-line">
-            <div class="tl-line-fill" id="tlFill"></div>
-          </div>
+          <div class="tl-line"></div>
         </div>
       </div>
     </section>
@@ -94,51 +92,29 @@
   <script src="common.js"></script>
   <script>
     (function () {
-        var stops = [
-    { pct: 0, label: 'May 2026', title: 'Apprentice - Product Ownership', href: 'product.html', accent: 'green' },
-    { pct: 25, label: 'Apr - June 2026', title: 'Intern - Technical Consulting', href: 'consulting.html', accent: 'green' },
-    { pct: 50, label: 'July - Sept 2025', title: 'Intern: UI/UX Design', href: 'uiux.html', accent: 'green' },
+      var stops = [
+    { label: 'May 2026', title: 'Apprentice - Product Ownership', href: 'product.html' },
+    { label: 'Apr - June 2026', title: 'Intern - Technical Consulting', href: 'consulting.html' },
+    { label: 'July - Sept 2025', title: 'Intern: UI/UX Design', href: 'uiux.html' },
     {
-  pct: 75,
   label: '2024-25',
   title: 'Operations Management via<br>VP @ Uni SDG Cell<br>Ops Head @ Special Olympics<br>R&D @ Uni Placements Cell<br>Rep @ Uni Student Council',
-  href: 'newsletter.html',
-  accent: 'green'
+  href: 'newsletter.html'
 },
-    { pct: 100, label: 'Oct - Dec 2023', title: 'Intern: SEO Analysis', href: 'seo.html', accent: 'green' },
+    { label: 'Oct - Dec 2023', title: 'Intern: SEO Analysis', href: 'seo.html' },
   ];
 
       var scene = document.getElementById('tlScene');
-      var fill = document.getElementById('tlFill');
-      var current = null;
-      var defaultIdx = 3;
 
-      function setRange(fromIdx) {
-        for (var j = 0; j < stops.length; j++) {
-          var btn = document.querySelector('.tl-dot-btn[data-idx="' + j + '"]');
-          var sub = document.getElementById('tl-sub-' + j);
-          var tick = document.getElementById('tl-tick-' + j);
-          if (j >= fromIdx) {
-            if (btn) btn.classList.add('active');
-            if (sub) sub.classList.add('shown');
-            if (tick) tick.classList.add('shown');
-          } else {
-            if (btn) btn.classList.remove('active');
-            if (sub) sub.classList.remove('shown');
-            if (tick) tick.classList.remove('shown');
-          }
-        }
-      }
-
-      stops.forEach(function (s, i) {
-        var above = i % 2 === 0;
-
+      stops.forEach(function (s) {
         var stop = document.createElement('div');
         stop.className = 'tl-stop';
 
+        var dot = document.createElement('div');
+        dot.className = 'tl-dot';
 
         var lbl = document.createElement('div');
-        lbl.className = above ? 'tl-label-above' : 'tl-label-below';
+        lbl.className = 'tl-label';
 
         var name = document.createElement('span');
         name.className = 'tl-label-name';
@@ -146,67 +122,31 @@
 
         var sub = document.createElement('span');
         sub.className = 'tl-label-sub';
-        sub.id = 'tl-sub-' + i;
         var link = document.createElement('a');
         link.href = s.href;
         link.innerHTML = s.title;
         sub.appendChild(link);
 
-        var tick = document.createElement('span');
-        tick.className = above ? 'tl-tick-above' : 'tl-tick-below';
-        tick.id = 'tl-tick-' + i;
+        lbl.appendChild(name);
+        lbl.appendChild(sub);
 
-        if (above) {
-          lbl.appendChild(name);
-          lbl.appendChild(sub);
-          lbl.appendChild(tick);
-        } else {
-          lbl.appendChild(tick);
-          lbl.appendChild(name);
-          lbl.appendChild(sub);
-        }
-
-        var btn = document.createElement('button');
-        btn.className = 'tl-dot-btn' + (s.accent ? ' tl-dot-' + s.accent : '');
-        btn.setAttribute('aria-label', s.label);
-        btn.setAttribute('data-idx', i);
-        btn.onclick = function () { tlSelect(i); };
-
+        stop.appendChild(dot);
         stop.appendChild(lbl);
-        stop.appendChild(btn);
         scene.appendChild(stop);
       });
 
       function trimLine() {
-        var dots = document.querySelectorAll('.tl-dot-btn');
+        var dots = document.querySelectorAll('.tl-dot');
         if (dots.length < 2) return;
-        var firstRect = dots[0].getBoundingClientRect();
-        var lastRect = dots[dots.length - 1].getBoundingClientRect();
-        var sceneRect = scene.getBoundingClientRect();
+        var first = dots[0].getBoundingClientRect();
+        var last = dots[dots.length - 1].getBoundingClientRect();
+        var sRect = scene.getBoundingClientRect();
         var line = document.querySelector('.tl-line');
-        var top = Math.round(firstRect.top - sceneRect.top + firstRect.height / 2);
-        var bottom = Math.round(sceneRect.bottom - (lastRect.top + lastRect.height / 2));
-        line.style.top = top + 'px';
-        line.style.bottom = bottom + 'px';
+        line.style.top = Math.round(first.top - sRect.top + first.height / 2) + 'px';
+        line.style.bottom = Math.round(sRect.bottom - (last.top + last.height / 2)) + 'px';
       }
-      requestAnimationFrame(function () { trimLine(); });
+      requestAnimationFrame(trimLine);
       window.addEventListener('resize', trimLine);
-
-      setRange(defaultIdx);
-      fill.style.height = (100 - stops[defaultIdx].pct) + '%';
-      current = defaultIdx;
-
-      window.tlSelect = function (idx) {
-        if (current === idx) {
-          setRange(stops.length);
-          fill.style.height = '0%';
-          current = null;
-          return;
-        }
-        setRange(idx);
-        fill.style.height = (100 - stops[idx].pct) + '%';
-        current = idx;
-      };
     })();
   </script>
 </body>
