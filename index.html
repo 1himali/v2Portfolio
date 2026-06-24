@@ -178,19 +178,18 @@
       });
 
       function trimLine() {
-        var firstDot = document.querySelector('.tl-dot-btn');
-        var lastDot = document.querySelector('.tl-dot-btn:last-child');
-        if (!firstDot || !lastDot) return;
+        var dots = document.querySelectorAll('.tl-dot-btn');
+        if (dots.length < 2) return;
+        var firstRect = dots[0].getBoundingClientRect();
+        var lastRect = dots[dots.length - 1].getBoundingClientRect();
         var sceneRect = scene.getBoundingClientRect();
-        var firstRect = firstDot.getBoundingClientRect();
-        var lastRect = lastDot.getBoundingClientRect();
         var line = document.querySelector('.tl-line');
-        var top = firstRect.top - sceneRect.top + firstRect.height / 2;
-        var bottom = sceneRect.bottom - (lastRect.top + lastRect.height / 2);
+        var top = Math.round(firstRect.top - sceneRect.top + firstRect.height / 2);
+        var bottom = Math.round(sceneRect.bottom - (lastRect.top + lastRect.height / 2));
         line.style.top = top + 'px';
         line.style.bottom = bottom + 'px';
       }
-      trimLine();
+      requestAnimationFrame(function () { trimLine(); });
       window.addEventListener('resize', trimLine);
 
       setRange(defaultIdx);

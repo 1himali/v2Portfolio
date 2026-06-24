@@ -551,7 +551,7 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 3px 10px;
 }
 
-/* ── Timeline: vertical, all dots on same line, left-aligned ── */
+/* ── Timeline: vertical, dots on same line, adjacent to content ── */
 .tl-scene {
   position: relative;
   padding: 24px 0 16px;
@@ -559,7 +559,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .tl-line {
   position: absolute;
-  left: 12px;
+  left: 11px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -578,17 +578,15 @@ img { max-width: 100%; height: auto; display: block; }
 
 .tl-stop {
   position: relative;
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 20px;
+  display: flex;
+  align-items: flex-start;
   padding: 16px 0;
 }
 
 .tl-dot-btn {
-  grid-column: 1;
-  justify-self: center;
-  align-self: start;
+  flex-shrink: 0;
   width: 22px; height: 22px;
+  margin: 3px 6px 0 0;
   border-radius: 50%;
   border: 2px solid var(--rule);
   background: var(--paper);
@@ -596,7 +594,6 @@ img { max-width: 100%; height: auto; display: block; }
   transition: border-color 0.25s, transform 0.25s, background 0.25s, box-shadow 0.25s;
   z-index: 3;
   padding: 0;
-  margin-top: 1px;
 }
 
 .tl-dot-btn:hover {
@@ -619,7 +616,8 @@ img { max-width: 100%; height: auto; display: block; }
 
 .tl-label-above,
 .tl-label-below {
-  grid-column: 2;
+  position: relative;
+  flex: 1;
   text-align: left;
 }
 
@@ -632,19 +630,13 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 500;
 }
 
-/* ── Connecting tick: horizontal line from dot to content ── */
+/* ── Tick: connecting line dot → content, animates with .shown ── */
 .tl-tick-above,
 .tl-tick-below {
-  display: none;
-}
-
-.tl-stop::before {
-  content: '';
   position: absolute;
-  left: 23px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 21px;
+  top: 7px;
+  left: -10px;
+  width: 10px;
   height: 1.5px;
   background: var(--ink);
   opacity: 0;
@@ -652,8 +644,23 @@ img { max-width: 100%; height: auto; display: block; }
   transition: opacity 0.3s ease;
 }
 
-.tl-stop:has(.tl-dot-btn.active)::before {
+.tl-tick-above.shown,
+.tl-tick-below.shown {
   opacity: 1;
+}
+
+.tl-tick-above::after,
+.tl-tick-below::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-right: 5px solid var(--ink);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
 }
 
 /* ── Subtitle (shown on click) ── */
@@ -709,10 +716,11 @@ html.dark .tl-dot-btn.active.tl-dot-amber  { border-color: #c8762a; background: 
 
 @media (max-width: 700px) {
   .tl-scene { padding: 16px 0 8px; }
-  .tl-stop { gap: 14px; padding: 12px 0; }
+  .tl-stop { padding: 12px 0; }
+  .tl-dot-btn { margin: 2px 4px 0 0; width: 18px; height: 18px; }
   .tl-label-name { font-size: 12px; }
   .tl-label-sub { font-size: 11px; }
-  .tl-stop::before { display: none; }
+  .tl-tick-above, .tl-tick-below { display: none; }
 }
 
 .newsletter-btn {
