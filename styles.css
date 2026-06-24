@@ -551,16 +551,15 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 3px 10px;
 }
 
-/* ── Timeline: vertical layout with alternating sides ── */
+/* ── Timeline: vertical, all dots on same line, left-aligned ── */
 .tl-scene {
   position: relative;
-  padding: 32px 0 16px;
+  padding: 24px 0 16px;
 }
 
 .tl-line {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 12px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -578,28 +577,16 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .tl-stop {
-  position: relative;
   display: grid;
-  grid-template-columns: 1fr 28px 1fr;
-  align-items: center;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
   padding: 16px 0;
 }
 
-.tl-label-above {
-  grid-column: 1;
-  text-align: right;
-  padding-right: 32px;
-}
-
-.tl-label-below {
-  grid-column: 3;
-  text-align: left;
-  padding-left: 32px;
-}
-
 .tl-dot-btn {
-  grid-column: 2;
+  grid-column: 1;
   justify-self: center;
+  align-self: start;
   width: 22px; height: 22px;
   border-radius: 50%;
   border: 2px solid var(--rule);
@@ -608,6 +595,7 @@ img { max-width: 100%; height: auto; display: block; }
   transition: border-color 0.25s, transform 0.25s, background 0.25s, box-shadow 0.25s;
   z-index: 3;
   padding: 0;
+  margin-top: 1px;
 }
 
 .tl-dot-btn:hover {
@@ -628,6 +616,12 @@ img { max-width: 100%; height: auto; display: block; }
 .tl-dot-btn.active.tl-dot-purple { border-color: #7c3aed; background: #7c3aed; box-shadow: 0 0 0 5px rgba(124,58,237,0.18); }
 .tl-dot-btn.active.tl-dot-amber  { border-color: #c8762a; background: #c8762a; box-shadow: 0 0 0 5px rgba(200,118,42,0.18); }
 
+.tl-label-above,
+.tl-label-below {
+  grid-column: 2;
+  text-align: left;
+}
+
 .tl-label-name {
   display: block;
   font-size: 13px;
@@ -635,17 +629,21 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: 0.12em;
   color: var(--muted);
   font-weight: 500;
-  white-space: nowrap;
 }
 
-/* ── Tick: horizontal connecting line between label and dot ── */
+/* ── Connecting tick: horizontal line from dot to content ── */
 .tl-tick-above,
 .tl-tick-below {
+  display: none;
+}
+
+.tl-stop::before {
+  content: '';
   position: absolute;
+  left: 23px;
   top: 50%;
   transform: translateY(-50%);
-  display: block;
-  width: 20px;
+  width: 14px;
   height: 1.5px;
   background: var(--ink);
   opacity: 0;
@@ -653,39 +651,9 @@ img { max-width: 100%; height: auto; display: block; }
   transition: opacity 0.3s ease;
 }
 
-.tl-tick-above.shown,
-.tl-tick-below.shown {
+.tl-stop:has(.tl-dot-btn.active)::before {
   opacity: 1;
 }
-
-.tl-tick-above::after {
-  content: '';
-  position: absolute;
-  right: -6px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 6px solid var(--ink);
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-}
-
-.tl-tick-below::after {
-  content: '';
-  position: absolute;
-  left: -6px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-right: 6px solid var(--ink);
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-}
-
-.tl-label-above .tl-tick-above { right: 0; }
-.tl-label-below .tl-tick-below { left: 0; }
 
 /* ── Subtitle (shown on click) ── */
 .tl-label-sub {
@@ -738,24 +706,12 @@ html.dark .tl-dot-btn.active.tl-dot-blue   { border-color: #2a6f97; background: 
 html.dark .tl-dot-btn.active.tl-dot-purple { border-color: #7c3aed; background: #7c3aed; box-shadow: 0 0 0 5px rgba(124,58,237,0.25); }
 html.dark .tl-dot-btn.active.tl-dot-amber  { border-color: #c8762a; background: #c8762a; box-shadow: 0 0 0 5px rgba(200,118,42,0.25); }
 
-/* ── Mobile: collapse to single column ── */
 @media (max-width: 700px) {
-  .tl-scene { padding: 20px 0 8px; }
-  .tl-line { left: 16px; transform: none; }
-  .tl-stop {
-    grid-template-columns: 28px 1fr;
-    padding: 12px 0;
-  }
-  .tl-label-above,
-  .tl-label-below {
-    grid-column: 2;
-    text-align: left;
-    padding: 0 0 0 16px;
-  }
-  .tl-dot-btn { grid-column: 1; }
-  .tl-tick-above, .tl-tick-below { display: none; }
-  .tl-label-name { font-size: 12px; white-space: normal; }
+  .tl-scene { padding: 16px 0 8px; }
+  .tl-stop { gap: 14px; padding: 12px 0; }
+  .tl-label-name { font-size: 12px; }
   .tl-label-sub { font-size: 11px; }
+  .tl-stop::before { display: none; }
 }
 
 .newsletter-btn {
