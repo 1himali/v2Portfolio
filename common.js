@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
     menuBtn.addEventListener('click', function () {
       this.classList.toggle('open');
       navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+    navLinks.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        menuBtn.classList.remove('open');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      });
     });
   }
 

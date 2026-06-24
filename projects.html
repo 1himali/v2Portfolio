@@ -15,7 +15,6 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="logo">Himali Suresh</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
       <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -25,8 +24,7 @@
           <li><a class="nav-link" href="case-studies.html">Case Studies</a></li>
           <li><a class="nav-link" href="findings.html">Findings</a></li>
           <li><a class="nav-link active" href="projects.html">Projects</a></li>
-          <li><a class="nav-link" href="xp.html">XP</a></li>
-          <li><a class="nav-link recruit-link" href="https://drive.google.com/file/d/16wgxD18yhUptIYQkDp76Jr0l8iT6JJI2/view?usp=sharing" target="_blank" rel="noopener">Recruit</a></li>
+          <li><a class="nav-link hire-link" href="https://drive.google.com/file/d/1mPgkDJMsaCAQm0-vJWk5xd6Azj1BZT4F/view?usp=sharing" target="_blank" rel="noopener">Hire</a></li>
         </ul>
       </nav>
     </div>
@@ -38,7 +36,7 @@
         <h1>Projects</h1>
         <p>Shipped systems across hospitality, campus administration, fintech, community, and automation.</p>
       </div>
-      <div class="projects-grid" id="projectsGrid"></div>
+      <div class="xp-grid" id="projectsGrid"></div>
     </div>
   </main>
 
@@ -49,7 +47,10 @@
         <a href="https://github.com/1himali" target="_blank" rel="noopener" class="footer-link">GitHub</a>
         <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
       </div>
-      <div class="footer-copy">Portfolio 2026</div>
+      <div class="footer-bottom">
+        <div class="footer-copy">Portfolio 2026</div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      </div>
     </div>
   </footer>
 
@@ -103,13 +104,14 @@
     function renderProjects() {
       const grid = document.getElementById('projectsGrid');
       grid.innerHTML = projects.map(p => `
-        <a class="project-card" href="projects/${p.slug}.html">
-          <div class="project-card-header">
-            <span class="project-domain">${p.domain}</span>
+        <a class="xp-card" href="projects/${p.slug}.html">
+          <div class="xp-card-accent"></div>
+          <div class="xp-card-body">
+            <span class="xp-card-domain">${p.domain}</span>
+            <h3 class="xp-card-title">${p.title}</h3>
+            <p class="xp-card-tagline">${p.tagline}</p>
+            <div class="xp-card-tags">${p.techs.slice(0,4).map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
           </div>
-          <h3 class="project-card-title">${p.title}</h3>
-          <p class="project-card-tagline">${p.tagline}</p>
-          <div class="project-card-meta">${p.techs.slice(0,4).map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
         </a>
       `).join('');
     }

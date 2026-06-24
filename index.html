@@ -15,7 +15,6 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="logo">Himali Suresh</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
       <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -25,8 +24,7 @@
           <li><a class="nav-link" href="case-studies.html">Case Studies</a></li>
           <li><a class="nav-link" href="findings.html">Findings</a></li>
           <li><a class="nav-link" href="projects.html">Projects</a></li>
-          <li><a class="nav-link" href="xp.html">XP</a></li>
-          <li><a class="nav-link recruit-link" href="https://drive.google.com/file/d/16wgxD18yhUptIYQkDp76Jr0l8iT6JJI2/view?usp=sharing" target="_blank" rel="noopener">Recruit</a></li>
+          <li><a class="nav-link hire-link" href="https://drive.google.com/file/d/1mPgkDJMsaCAQm0-vJWk5xd6Azj1BZT4F/view?usp=sharing" target="_blank" rel="noopener">Hire</a></li>
         </ul>
       </nav>
     </div>
@@ -37,12 +35,11 @@
       <div class="container">
         <img src="pfp.jpeg" alt="Himali Suresh" class="hero-pfp">
         <h1 class="hero-name">Himali Suresh</h1>
-        <p class="hero-headline">Product Builder and Analyst | AI, FinTech &amp; Consumer Tech Products | 7x Hackathon &amp; Ideathon Finalist</p>
+        <p class="hero-headline">Building and analysing AI &amp; products in B2B SaaS &amp; consumer tech</p>
         <div class="hero-about">
-          <p>I gravitate toward problems hiding in plain sight. The kind people work around every day instead of solving.</p>
-          <p>I'm a second-year BCA student at CHRIST University building products across AI, SaaS, operations, and campus infrastructure. My work spans stakeholder interviews, product strategy, system design, and full-stack development. Most projects begin with a real operational problem and end with something people can actually use.</p>
-          <p>I've worked on AI adoption initiatives, owned product development across multiple sprint cycles, built production-ready applications, and competed in seven hackathons across India.</p>
-          <p>Always building. Occasionally writing.</p>
+          <p>Through being a finalist in 12/14 of hackathons, ideathons and case competions nation-wide, I honed my ability to question assumptions, identify overlooked opportunities, and analyse whether a perceived limitation is truly even a constraint.</p>
+          <p>I thrive in spaces that value impact > trivial conventions, & without imbibing limiting beliefs, I find ways to leverage them to create feasible & better solutions.</p>
+          <p>This mindset helps me deduce gaps in growth or efficiency in products and procedures that may otherwise go unnoticed, and then weigh trade offs against gains.</p>
         </div>
         <div class="social-links">
           <a href="https://github.com/1himali" target="_blank" rel="noopener" class="social-link">
@@ -64,6 +61,20 @@
         </div>
       </div>
     </section>
+
+    <section id="experience" class="xp-content">
+      <div class="container">
+        <div class="page-header" style="text-align:center">
+          <h1>Experience Signals</h1>
+          <p>The work I've done spans across Product Ownership, Consulting, Product and UI/UX Design, a B2C venture, Operations and SEO.</p>
+        </div>
+        <div class="tl-scene" id="tlScene">
+          <div class="tl-line">
+            <div class="tl-line-fill" id="tlFill"></div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -73,10 +84,115 @@
         <a href="https://github.com/1himali" target="_blank" rel="noopener" class="footer-link">GitHub</a>
         <a href="https://www.linkedin.com/in/1himali" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
       </div>
-      <div class="footer-copy">Portfolio 2026</div>
+      <div class="footer-bottom">
+        <div class="footer-copy">Portfolio 2026</div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      </div>
     </div>
   </footer>
 
   <script src="common.js"></script>
+  <script>
+    (function () {
+        var stops = [
+    { pct: 0, label: 'May 2026', title: 'Apprentice - Product Ownership', href: 'product.html', accent: 'green' },
+    { pct: 25, label: 'Apr - June 2026', title: 'Intern - Technical Consulting', href: 'consulting.html', accent: 'green' },
+    { pct: 50, label: 'July - Sept 2025', title: 'Intern: UI/UX Design', href: 'uiux.html', accent: 'green' },
+    {
+  pct: 75,
+  label: '2024-25',
+  title: 'Operations Management via<br>VP @ Uni SDG Cell<br>Ops Head @ Special Olympics<br>R&D @ Uni Placements Cell<br>Rep @ Uni Student Council',
+  href: 'newsletter.html',
+  accent: 'green'
+},
+    { pct: 100, label: 'Oct - Dec 2023', title: 'Intern: SEO Analysis', href: 'seo.html', accent: 'green' },
+  ];
+
+      var scene = document.getElementById('tlScene');
+      var fill = document.getElementById('tlFill');
+      var current = null;
+      var defaultIdx = 3;
+
+      function setRange(fromIdx) {
+        for (var j = 0; j < stops.length; j++) {
+          var btn = document.querySelector('.tl-dot-btn[data-idx="' + j + '"]');
+          var sub = document.getElementById('tl-sub-' + j);
+          var tick = document.getElementById('tl-tick-' + j);
+          if (j >= fromIdx) {
+            if (btn) btn.classList.add('active');
+            if (sub) sub.classList.add('shown');
+            if (tick) tick.classList.add('shown');
+          } else {
+            if (btn) btn.classList.remove('active');
+            if (sub) sub.classList.remove('shown');
+            if (tick) tick.classList.remove('shown');
+          }
+        }
+      }
+
+      stops.forEach(function (s, i) {
+        var above = i % 2 === 0;
+
+        var stop = document.createElement('div');
+        stop.className = 'tl-stop';
+        stop.style.left = s.pct + '%';
+
+        var lbl = document.createElement('div');
+        lbl.className = above ? 'tl-label-above' : 'tl-label-below';
+
+        var name = document.createElement('span');
+        name.className = 'tl-label-name';
+        name.textContent = s.label;
+
+        var sub = document.createElement('span');
+        sub.className = 'tl-label-sub';
+        sub.id = 'tl-sub-' + i;
+        var link = document.createElement('a');
+        link.href = s.href;
+        link.innerHTML = s.title;
+        sub.appendChild(link);
+
+        var tick = document.createElement('span');
+        tick.className = above ? 'tl-tick-above' : 'tl-tick-below';
+        tick.id = 'tl-tick-' + i;
+
+        if (above) {
+          lbl.appendChild(name);
+          lbl.appendChild(sub);
+          lbl.appendChild(tick);
+        } else {
+          lbl.appendChild(tick);
+          lbl.appendChild(name);
+          lbl.appendChild(sub);
+        }
+
+        var btn = document.createElement('button');
+        btn.className = 'tl-dot-btn' + (s.accent ? ' tl-dot-' + s.accent : '');
+        btn.setAttribute('aria-label', s.label);
+        btn.setAttribute('data-idx', i);
+        btn.onclick = function () { tlSelect(i); };
+
+        stop.appendChild(lbl);
+        stop.appendChild(btn);
+        scene.appendChild(stop);
+      });
+
+      setRange(defaultIdx);
+      fill.style.height = (100 - stops[defaultIdx].pct) + '%';
+      current = defaultIdx;
+
+      window.tlSelect = function (idx) {
+        if (current === idx) {
+          setRange(stops.length);
+          fill.style.height = '0%';
+          current = null;
+          return;
+        }
+        setRange(idx);
+        fill.style.height = (100 - stops[idx].pct) + '%';
+        current = idx;
+      };
+    })();
+  </script>
 </body>
 </html>
