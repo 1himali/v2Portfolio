@@ -192,6 +192,7 @@ img { max-width: 100%; height: auto; display: block; }
 .social-link svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
 
 .page-header { padding: 48px 0 32px; border-bottom: 1px solid var(--rule); margin-bottom: 32px; }
+.xp-content .page-header { border-bottom: none; }
 .page-header h1 {
   font-family: 'Fraunces', serif;
   font-size: 40px;
